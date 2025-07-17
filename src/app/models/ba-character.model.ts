@@ -1,4 +1,4 @@
-export interface BlueArchiveCharacter {
+export interface BlueArchiveCharacterModel {
 	id?: number,
 	name: string,
 	age?: number,
@@ -6,7 +6,7 @@ export interface BlueArchiveCharacter {
 	skins: BlueArchiveCharacterSkin[],
 }
 
-export interface BlueArchiveCharacterSkin {
+interface BlueArchiveCharacterSkin {
 	name: string,
 	image: string,
 }
