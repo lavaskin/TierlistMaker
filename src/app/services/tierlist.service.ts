@@ -12,7 +12,7 @@ export class TierlistService {
 	private tierlists: TierlistModel[] = deepCopy(TierlistsData);
 
 	public getTierlist(id: number): Observable<TierlistModel> {
-		const tierlist = this.tierlists.find(t => t.id === id);
+		const tierlist = this.tierlists.find(t => t.id == id);
 		if (!tierlist) {
 			throw new Error(`Tierlist with id ${id} not found`);
 		}
