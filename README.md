@@ -1,6 +1,6 @@
-# TierlistMaker
+# Tierlist Maker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+Angular 20 project using PrimeNG for components. Statically hosted tierlist making website to assist with scenarios in which you want to preview variations of the same thing you're ranking more easily.
 
 ## Development server
 

@@ -1,5 +1,14 @@
 {
 	"cSpell.words": [
+		"primeng",
+		"primeuix",
 		"tierlist"
+	],
+	"cSpell.ignorePaths": [
+		"package-lock.json",
+		"node_modules",
+		"vscode-extension",
+		"src/app/data",
+		"src/app/models",
 	]
 }
