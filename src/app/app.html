@@ -1,17 +1,1 @@
-<div class="flex col">
-@for (item of loadedTierlist?.items; track item.id) {
-	<div class="flex row gap-2 mb-2">
-		<img class="thumb" [src]="item.thumbnail" [alt]="item.name">
-		<h2>{{ item.name }}</h2>
-	</div>
-	
-	<div class="flex row gap-2 mb-4">
-		@for (skin of item.skins; track $index) {
-			<div class="flex col align-center">
-				<img class="skin" [src]="skin.image" [alt]="skin.name" />
-				<p>{{ skin.name }}</p>
-			</div>
-		}
-	</div>
-}
-</div>
+<router-outlet></router-outlet>
