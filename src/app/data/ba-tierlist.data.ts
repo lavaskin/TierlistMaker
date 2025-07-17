@@ -1,10 +1,11 @@
-import { BlueArchiveCharacter } from "../models/ba-character.model";
-import { Tierlist } from "../models/tierlist.model";
+import { BlueArchiveCharacterModel } from "../models/ba-character.model";
+import { TierlistIds } from "../models/enums/tierlist-ids.enum";
+import { TierlistModel } from "../models/tierlist.model";
 
 // Info from: https://bluearchive.wiki/wiki/Characters
 
-const baTierList: Tierlist = {
-	id: 0,
+const baTierList: TierlistModel = {
+	id: TierlistIds.BlueArchive,
 	name: "Blue Archive",
 	items: [
 		{
@@ -564,7 +565,7 @@ const baTierList: Tierlist = {
 			],
 		},
 		*/
-	] as BlueArchiveCharacter[],
+	] as BlueArchiveCharacterModel[],
 }
 
 // Add an id to all characters
