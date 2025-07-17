@@ -1,3 +1,3 @@
 export enum TierlistIds {
-	BlueArchive = 0,
+	BlueArchive = 1,
 } 
