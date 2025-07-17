@@ -1,11 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TileComponent } from '@app/components/tile.component/tile.component';
 import { TierlistModel } from '@app/models/tierlist.model';
 import { TierlistService } from '@app/services/tierlist.service';
 
 @Component({
 	selector: 'page-tierlist',
-	imports: [],
+	imports: [
+		CommonModule,
+		TileComponent,
+	],
 	templateUrl: './tierlist-page.html',
 	styleUrl: './tierlist-page.scss'
 })
