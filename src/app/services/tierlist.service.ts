@@ -1,8 +1,8 @@
 import { Observable } from "rxjs";
-import { TierlistModel } from "../models/tierlist.model";
 import { Injectable } from "@angular/core";
-import TierlistsData from "../data/tierlists.data";
-import { deepCopy } from "../utils";
+import TierlistsData from "@app/data/tierlists.data";
+import { TierlistModel } from "@app/models/tierlist.model";
+import { deepCopy } from "@app/utils";
 
 @Injectable({
 	providedIn: 'root'

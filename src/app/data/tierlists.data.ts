@@ -1,5 +1,4 @@
-
-import { TierlistModel } from "../models/tierlist.model";
+import { TierlistModel } from "@app/models/tierlist.model";
 import baTierList from "./ba-tierlist.data";
 
 const TierlistsData: TierlistModel[] = [

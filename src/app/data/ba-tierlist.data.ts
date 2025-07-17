@@ -1,6 +1,6 @@
-import { BlueArchiveCharacterModel } from "../models/ba-character.model";
-import { TierlistIds } from "../models/enums/tierlist-ids.enum";
-import { TierlistModel } from "../models/tierlist.model";
+import { BlueArchiveCharacterModel } from "@app/models/ba-character.model";
+import { TierlistIds } from "@app/models/enums/tierlist-ids.enum";
+import { TierlistModel } from "@app/models/tierlist.model";
 
 // Info from: https://bluearchive.wiki/wiki/Characters
 

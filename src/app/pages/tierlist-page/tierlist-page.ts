@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TierlistService } from '../../services/tierlist.service';
-import { TierlistModel } from '../../models/tierlist.model';
+import { TierlistModel } from '@app/models/tierlist.model';
+import { TierlistService } from '@app/services/tierlist.service';
 
 @Component({
 	selector: 'page-tierlist',
