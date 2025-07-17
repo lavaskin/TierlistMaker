@@ -1,16 +1,25 @@
 import { Observable } from "rxjs";
-import { Tierlist } from "../models/tierlist.model";
-import baTierList from "../data/ba-tierlist.data";
+import { TierlistModel } from "../models/tierlist.model";
 import { Injectable } from "@angular/core";
+import TierlistsData from "../data/tierlists.data";
+import { deepCopy } from "../utils";
 
 @Injectable({
 	providedIn: 'root'
 })
 export class TierlistService {
-	getTierlist(): Observable<Tierlist> {
-		const tierlist = JSON.parse(JSON.stringify(baTierList)) as Tierlist;
-		return new Observable<Tierlist>((observer) => {
-			observer.next(tierlist);
+	// Deep copy the tierlists data to avoid mutation
+	private tierlists: TierlistModel[] = deepCopy(TierlistsData);
+
+	public getTierlist(id: number): Observable<TierlistModel> {
+		const tierlist = this.tierlists.find(t => t.id === id);
+		if (!tierlist) {
+			throw new Error(`Tierlist with id ${id} not found`);
+		}
+
+		const tierlistCopy = deepCopy(tierlist);
+		return new Observable<TierlistModel>((observer) => {
+			observer.next(tierlistCopy);
 			observer.complete();
 		});
 	}
