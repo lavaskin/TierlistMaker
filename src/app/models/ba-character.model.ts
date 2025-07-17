@@ -1,12 +1,5 @@
-export interface BlueArchiveCharacterModel {
-	id?: number,
-	name: string,
-	age?: number,
-	thumbnail?: string,
-	skins: BlueArchiveCharacterSkin[],
-}
+import { TierlistItemModel } from "./tierlist-item.model";
 
-interface BlueArchiveCharacterSkin {
-	name: string,
-	image: string,
+export interface BlueArchiveCharacterModel extends TierlistItemModel {
+	age?: number,
 }
