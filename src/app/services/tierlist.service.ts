@@ -23,4 +23,12 @@ export class TierlistService {
 			observer.complete();
 		});
 	}
+
+	public getAllTierlists(): Observable<TierlistModel[]> {
+		const tierlistsCopy = deepCopy(this.tierlists);
+		return new Observable<TierlistModel[]>((observer) => {
+			observer.next(tierlistsCopy);
+			observer.complete();
+		});
+	}
 }
