@@ -5,7 +5,7 @@ import { SpinnerComponent } from '@app/components/spinner/spinner.component';
 import { TierlistIds } from '@app/models/enums/tierlist-ids.enum';
 import { TierlistModel } from '@app/models/tierlist.model';
 import { StorageService } from '@app/services/storage.service';
-import { TierlistService } from '@app/services/tierlist.service';
+import { TemplateService } from '@app/services/template.service';
 import { ButtonModule } from 'primeng/button';
 import { forkJoin } from 'rxjs';
 
@@ -24,7 +24,7 @@ export class HomePage {
 	public userTierlists: TierlistModel[] = [];
 
 	private _router = inject(Router);
-	private _tierlists = inject(TierlistService);
+	private _templates = inject(TemplateService);
 	private _storage = inject(StorageService);
 
 	ngOnInit(): void {
@@ -32,8 +32,8 @@ export class HomePage {
 
 		// Fetch both user tierlists and all the available templates
 		forkJoin({
-			tierlistTemplates: this._tierlists.getAllTierlists(),
-			userTierlists: this._storage.getAllTierlists()
+			tierlistTemplates: this._templates.getAll(),
+			userTierlists: this._storage.getAll()
 		}).subscribe({
 			next: ({ tierlistTemplates, userTierlists }) => {
 				this.tierlistTemplates = tierlistTemplates;

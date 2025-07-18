@@ -13,7 +13,7 @@ export class StorageService {
 	 * @param userId The user ID to retrieve the tierlist for
 	 * @returns An observable containing the tierlist or null if not found
 	 */
-	public getTierlist(userId: number): Observable<TierlistModel | null> {
+	public get(userId: number): Observable<TierlistModel | null> {
 		const tierlist = this.getFromLocalStorage(userId);
 
 		return new Observable<TierlistModel | null>((observer) => {
@@ -26,7 +26,7 @@ export class StorageService {
 	 * Fetches all the available tierlists created by the user
 	 * @returns An observable containing all tierlists found
 	 */
-	public getAllTierlists(): Observable<TierlistModel[]> {
+	public getAll(): Observable<TierlistModel[]> {
 		const tierlists: TierlistModel[] = [];
 		for (let i = 0; i < localStorage.length; i++) {
 			const key = localStorage.key(i);
@@ -50,7 +50,7 @@ export class StorageService {
 	 * @param tierlist The tierlist to save
 	 * @returns The tierlist saved, with an attached userId if necessary
 	 */
-	public saveTierlist(tierlist: TierlistModel): Observable<TierlistModel> {
+	public save(tierlist: TierlistModel): Observable<TierlistModel> {
 		// Verify if the tierlist already has a userId
 		if (!tierlist.userId) {
 			// If not, create a new userId
@@ -73,7 +73,7 @@ export class StorageService {
 	 * Deletes the tierlist for the specified user ID.
 	 * @returns An observable indicating the completion of the deletion
 	 */
-	public deleteTierlist(userId: number): Observable<void> {
+	public delete(userId: number): Observable<void> {
 		localStorage.removeItem(`${this.storageKeyPrefix}${userId}`);
 
 		return new Observable<void>((observer) => {

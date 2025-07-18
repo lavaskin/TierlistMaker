@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StorageService } from '@app/services/storage.service';
-import { TierlistService } from '@app/services/tierlist.service';
+import { TemplateService } from '@app/services/template.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
@@ -29,7 +29,7 @@ export class CreatePage {
 	private _route = inject(ActivatedRoute);
 	private _router = inject(Router);
 	private _toasts = inject(MessageService);
-	private _tierlists = inject(TierlistService);
+	private _templates = inject(TemplateService);
 	private _storage = inject(StorageService);
 
 	ngOnInit(): void {
@@ -42,7 +42,7 @@ export class CreatePage {
 			}
 
 			this.isLoadingTemplate = true;
-			this._tierlists.getTierlist(templateId).subscribe({
+			this._templates.get(templateId).subscribe({
 				next: (tierlist: TierlistModel) => {
 					tierlist.name = `New ${tierlist.name} Tierlist`;
 					this.tierlist = tierlist;
@@ -66,7 +66,7 @@ export class CreatePage {
 		}
 
 		this.isLoadingCreation = true;
-		this._storage.saveTierlist(this.tierlist!).subscribe({
+		this._storage.save(this.tierlist!).subscribe({
 			next: (savedTierlist) => {
 				// nav over to the newly created tierlist
 				this._router.navigate(['/tierlist', savedTierlist.userId]);

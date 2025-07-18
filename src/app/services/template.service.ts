@@ -7,14 +7,14 @@ import { deepCopy } from "@app/utils";
 @Injectable({
 	providedIn: 'root'
 })
-export class TierlistService {
+export class TemplateService {
 	// Deep copy the tierlists data to avoid mutation
-	private tierlists: TierlistModel[] = deepCopy(TierlistsData);
+	private templates: TierlistModel[] = deepCopy(TierlistsData);
 
-	public getTierlist(id: number): Observable<TierlistModel> {
-		const tierlist = this.tierlists.find(t => t.templateId == id);
+	public get(templateId: number): Observable<TierlistModel> {
+		const tierlist = this.templates.find(t => t.templateId == templateId);
 		if (!tierlist) {
-			throw new Error(`Tierlist with id ${id} not found`);
+			throw new Error(`Template with id ${templateId} not found`);
 		}
 
 		const tierlistCopy = deepCopy(tierlist);
@@ -24,8 +24,8 @@ export class TierlistService {
 		});
 	}
 
-	public getAllTierlists(): Observable<TierlistModel[]> {
-		const tierlistsCopy = deepCopy(this.tierlists);
+	public getAll(): Observable<TierlistModel[]> {
+		const tierlistsCopy = deepCopy(this.templates);
 		return new Observable<TierlistModel[]>((observer) => {
 			observer.next(tierlistsCopy);
 			observer.complete();

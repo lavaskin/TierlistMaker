@@ -28,7 +28,7 @@ export class TierlistPage {
 			const tierlistUserId = params['id'];
 
 			this.isLoading = true;
-			this._storage.getTierlist(tierlistUserId).subscribe({
+			this._storage.get(tierlistUserId).subscribe({
 				next: (tierlist: TierlistModel | null) => {
 					if (!tierlist) {
 						this._toasts.add({ severity: 'error', summary: 'Not Found', detail: 'Tierlist not found.' });
