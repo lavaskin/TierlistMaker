@@ -3,7 +3,8 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TileComponent } from '@app/components/tile/tile.component';
 import { TierlistModel } from '@app/models/tierlist.model';
-import { TierlistService } from '@app/services/tierlist.service';
+import { StorageService } from '@app/services/storage.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
 	selector: 'page-tierlist',
@@ -12,30 +13,34 @@ import { TierlistService } from '@app/services/tierlist.service';
 		TileComponent,
 	],
 	templateUrl: './tierlist.page.html',
-	styleUrl: './tierlist.page.scss'
+	styleUrl: './tierlist.page.scss',
 })
 export class TierlistPage {
-	private _tierlistId?: number;
+	public isLoading: boolean = false;
 	public tierlist?: TierlistModel;
 
 	private _route = inject(ActivatedRoute);
-	private _tierlist = inject(TierlistService);
+	private _storage = inject(StorageService);
+	private _toasts = inject(MessageService);
 
 	ngOnInit() {
 		this._route.params.subscribe(params => {
-			this._tierlistId = params['id'];
-			this._fetchTierlist(this._tierlistId!);
-		});
-	}
+			const tierlistUserId = params['id'];
 
-	private _fetchTierlist(id: number) {
-		this._tierlist.getTierlist(id).subscribe({
-			next: (tierlist: TierlistModel) => {
-				this.tierlist = tierlist;
-			},
-			error: (err) => {
-				console.error('Error fetching tierlist:', err);
-			}
+			this.isLoading = true;
+			this._storage.getTierlist(tierlistUserId).subscribe({
+				next: (tierlist: TierlistModel | null) => {
+					if (!tierlist) {
+						console.error('Tierlist not found for user ID:', tierlistUserId);
+						this._toasts.add({ severity: 'error', summary: 'Not Found', detail: 'Tierlist not found.' });
+					} else {
+						this.tierlist = tierlist as TierlistModel;
+					}
+				},
+				error: () => {
+					this._toasts.add({ severity: 'error', summary: 'Error', detail: 'Failed to load tierlist.' });
+				}
+			}).add(() => this.isLoading = false);
 		});
 	}
 }
