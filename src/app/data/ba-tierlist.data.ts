@@ -7,6 +7,14 @@ import { TierlistModel } from "@app/models/tierlist.model";
 const baTierList: TierlistModel = {
 	id: TierlistIds.BlueArchive,
 	name: "Blue Archive",
+	defaultTiers: [
+		{ label: '😭', color: '#ff0000' },
+		{ label: 'A', color: '#ff7f00' },
+		{ label: 'B', color: '#ef5b70' },
+		{ label: 'C', color: '#00ff00' },
+		{ label: 'D', color: '#f15b4c' },
+		{ label: 'F', color: '#e93f33' },
+	],
 	items: [
 		{
 			name: 'Airi',

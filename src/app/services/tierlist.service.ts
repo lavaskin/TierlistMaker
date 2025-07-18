@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import TierlistsData from "@app/data/tierlists.data";
+import { TierlistsData } from "@app/data/tierlists.data";
 import { TierlistModel } from "@app/models/tierlist.model";
 import { deepCopy } from "@app/utils";
 
