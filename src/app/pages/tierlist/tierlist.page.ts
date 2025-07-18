@@ -31,11 +31,11 @@ export class TierlistPage {
 			this._storage.getTierlist(tierlistUserId).subscribe({
 				next: (tierlist: TierlistModel | null) => {
 					if (!tierlist) {
-						console.error('Tierlist not found for user ID:', tierlistUserId);
 						this._toasts.add({ severity: 'error', summary: 'Not Found', detail: 'Tierlist not found.' });
-					} else {
-						this.tierlist = tierlist as TierlistModel;
+						return;
 					}
+					
+					this.tierlist = tierlist as TierlistModel;
 				},
 				error: () => {
 					this._toasts.add({ severity: 'error', summary: 'Error', detail: 'Failed to load tierlist.' });
