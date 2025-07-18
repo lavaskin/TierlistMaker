@@ -8,12 +8,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TierlistModel } from '@app/models/tierlist.model';
 import { SpinnerComponent } from '@app/components/spinner/spinner.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
 	selector: 'page-create',
 	imports: [
 		CommonModule, FormsModule,
-		SpinnerComponent, InputTextModule, ButtonModule,
+		SpinnerComponent, InputTextModule, ButtonModule, ToastModule,
 	],
 	templateUrl: './create.page.html',
 	styleUrl: './create.page.scss'
@@ -25,6 +27,7 @@ export class CreatePage {
 
 	private _route = inject(ActivatedRoute);
 	private _router = inject(Router);
+	private _toasts = inject(MessageService);
 	private _tierlists = inject(TierlistService);
 	private _storage = inject(StorageService);
 
@@ -32,24 +35,19 @@ export class CreatePage {
 		// Get the template id out of the url
 		this._route.params.subscribe(params => {
 			const templateId = params['id'];
-
-			// Fetch the tierlist template details
-			this.isLoadingTemplate = true;
-			this._tierlists.getTierlist(templateId).subscribe({
-				next: (tierlist: TierlistModel) => {
-					this.tierlist = tierlist;
-				},
-				error: (err) => {
-					console.error('Error fetching tierlist:', err);
-				}
-			}).add(() => this.isLoadingTemplate = false);
+			if (templateId == undefined) {
+				this._toasts.add({ severity: 'error', summary: 'Error', detail: 'No template ID provided.' });
+				return;
+			}
+			
+			this.fetchTemplate(templateId);
 		});
 	}
 
 	public createTierlist() {
 		const tierlistName = this.tierlist!.name.trim();
 		if (!tierlistName) {
-			alert('Tierlist name cannot be empty.');
+			this._toasts.add({ severity: 'warn', summary: 'Warning', detail: 'Tierlist name cannot be empty.' });
 			return;
 		}
 
@@ -60,9 +58,20 @@ export class CreatePage {
 				this._router.navigate(['/tierlist', savedTierlist.userId]);
 			},
 			error: (err) => {
-				console.error('Error saving tierlist:', err);
-				alert('Failed to create tierlist. Please try again.');
+				this._toasts.add({ severity: 'error', summary: 'Error', detail: 'Failed to create tierlist.' });
 			}
 		})
+	}
+
+	private fetchTemplate(tierlistId: number): void {
+		this.isLoadingTemplate = true;
+		this._tierlists.getTierlist(tierlistId).subscribe({
+			next: (tierlist: TierlistModel) => {
+				this.tierlist = tierlist;
+			},
+			error: () => {
+				this._toasts.add({ severity: 'error', summary: 'Error', detail: 'Failed to load tierlist template.' });
+			}
+		}).add(() => this.isLoadingTemplate = false);
 	}
 }
