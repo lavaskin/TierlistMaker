@@ -5,7 +5,7 @@ import { TierlistModel } from "@app/models/tierlist.model";
 // Info from: https://bluearchive.wiki/wiki/Characters
 
 const baTierList: TierlistModel = {
-	id: TierlistIds.BlueArchive,
+	templateId: TierlistIds.BlueArchive,
 	name: "Blue Archive",
 	defaultTiers: [
 		{ label: '😭', color: '#ff0000' },
