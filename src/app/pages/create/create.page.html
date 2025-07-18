@@ -1,0 +1,8 @@
+<div class="flex col gap-2 align-center justify-center">
+	@if (isLoadingTemplate) {
+		<app-spinner></app-spinner>
+	} @else {
+		<input pInputText type="text" [(ngModel)]="tierlist!.name" placeholder="Tierlist Name">
+		<p-button label="Create" (click)="createTierlist()"></p-button>
+	}
+</div>

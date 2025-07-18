@@ -15,27 +15,24 @@ import { TierlistService } from '@app/services/tierlist.service';
 	styleUrl: './viewer.page.scss'
 })
 export class ViewerPage {
-	private _tierlistId?: number;
 	public tierlist?: TierlistModel;
 
 	private _route = inject(ActivatedRoute);
-	private _tierlist = inject(TierlistService);
+	private _tierlists = inject(TierlistService);
 
 	ngOnInit() {
 		this._route.params.subscribe(params => {
-			this._tierlistId = params['id'];
-			this._fetchTierlist(this._tierlistId!);
-		});
-	}
+			const tierlistId = params['id'];
 
-	private _fetchTierlist(id: number) {
-		this._tierlist.getTierlist(id).subscribe({
-			next: (tierlist: TierlistModel) => {
-				this.tierlist = tierlist;
-			},
-			error: (err) => {
-				console.error('Error fetching tierlist:', err);
-			}
+			// Fetch the tierlist template details
+			this._tierlists.getTierlist(tierlistId).subscribe({
+				next: (tierlist: TierlistModel) => {
+					this.tierlist = tierlist;
+				},
+				error: (err) => {
+					console.error('Error fetching tierlist:', err);
+				}
+			});
 		});
 	}
 }
