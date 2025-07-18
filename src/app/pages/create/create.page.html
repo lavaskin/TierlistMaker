@@ -1,8 +1,18 @@
 <div class="flex col gap-2 align-center justify-center">
+	<p class="font-xl mb-2">Create a Tierlist from Template</p>
+	
 	@if (isLoadingTemplate) {
 		<app-spinner></app-spinner>
 	} @else {
-		<input pInputText type="text" [(ngModel)]="tierlist!.name" placeholder="Tierlist Name">
-		<p-button label="Create" (click)="createTierlist()">Create Tierlist</p-button>
+		<p-floatlabel variant="in">
+			<input pInputText
+				id="tierlist-name"
+				type="text"
+				[(ngModel)]="tierlist!.name">
+				<label>Tierlist Name</label>
+		</p-floatlabel>
+		<p-button label="Create"
+			(click)="createTierlist()"
+			[disabled]="!canCreate"></p-button>
 	}
 </div>

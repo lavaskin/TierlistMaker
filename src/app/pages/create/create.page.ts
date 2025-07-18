@@ -5,6 +5,7 @@ import { TierlistService } from '@app/services/tierlist.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
 import { ButtonModule } from 'primeng/button';
 import { TierlistModel } from '@app/models/tierlist.model';
 import { SpinnerComponent } from '@app/components/spinner/spinner.component';
@@ -15,7 +16,7 @@ import { MessageService } from 'primeng/api';
 	selector: 'page-create',
 	imports: [
 		CommonModule, FormsModule,
-		SpinnerComponent, InputTextModule, ButtonModule, ToastModule,
+		SpinnerComponent, InputTextModule, ButtonModule, ToastModule, FloatLabelModule,
 	],
 	templateUrl: './create.page.html',
 	styleUrl: './create.page.scss'
@@ -39,9 +40,22 @@ export class CreatePage {
 				this._toasts.add({ severity: 'error', summary: 'Error', detail: 'No template ID provided.' });
 				return;
 			}
-			
-			this.fetchTemplate(templateId);
+
+			this.isLoadingTemplate = true;
+			this._tierlists.getTierlist(templateId).subscribe({
+				next: (tierlist: TierlistModel) => {
+					tierlist.name = `New ${tierlist.name} Tierlist`;
+					this.tierlist = tierlist;
+				},
+				error: () => {
+					this._toasts.add({ severity: 'error', summary: 'Error', detail: 'Failed to load tierlist template.' });
+				}
+			}).add(() => this.isLoadingTemplate = false);
 		});
+	}
+
+	public get canCreate(): boolean {
+		return this.tierlist !== undefined && this.tierlist.name.trim().length > 0;
 	}
 
 	public createTierlist() {
@@ -61,17 +75,5 @@ export class CreatePage {
 				this._toasts.add({ severity: 'error', summary: 'Error', detail: 'Failed to create tierlist.' });
 			}
 		})
-	}
-
-	private fetchTemplate(tierlistId: number): void {
-		this.isLoadingTemplate = true;
-		this._tierlists.getTierlist(tierlistId).subscribe({
-			next: (tierlist: TierlistModel) => {
-				this.tierlist = tierlist;
-			},
-			error: () => {
-				this._toasts.add({ severity: 'error', summary: 'Error', detail: 'Failed to load tierlist template.' });
-			}
-		}).add(() => this.isLoadingTemplate = false);
 	}
 }
