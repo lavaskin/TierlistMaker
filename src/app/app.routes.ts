@@ -7,6 +7,7 @@ import { CreatePage } from './pages/create/create.page';
 export const routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full' },
 	{ path: 'home', component: HomePage },
+	{ path: 'create', component: CreatePage },
 	{ path: 'create/:id', component: CreatePage },
 	{ path: 'tierlist/:id', component: TierlistPage },
 	{ path: 'viewer/:id', component: ViewerPage },
