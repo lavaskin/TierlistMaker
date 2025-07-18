@@ -1,10 +1,33 @@
-<h1 class="font-l mb-2">Choose a Tierlist Template:</h1>
+<div class="flex col gap-2">
+	@if (isLoading) {
+		<app-spinner></app-spinner>
+	} @else {
+		<p class="font-l">Create a Tierlist from a template:</p>
+		@if (tierlistTemplates.length > 0) {
+			<div class="flex row gap-2">
+				@for (template of tierlistTemplates; track $index) {
+					<a pButton routerLink="/create/{{ template.templateId }}" size="large">
+						<i class="pi pi-book" pButtonIcon></i>
+						<span pButtonLabel>{{ template.name }}</span>
+				</a>
+			}
+		</div>
+		} @else {
+			<p class="font-m">No templates available.</p>
+		}
 
-<div class="flex row gap-2">
-	@for (tierlist of tierlists; track $index) {
-		<a pButton routerLink="/tierlist/{{ tierlist.id }}" size="large">
-			<i class="pi pi-book" pButtonIcon></i>
-			<span pButtonLabel>{{ tierlist.name }}</span>
-		</a>
+		<p class="font-l mt-2">View your existing Tierlists:</p>
+		@if (userTierlists.length > 0) {
+		<div class="flex row gap-2">
+			@for (tierlist of userTierlists; track $index) {
+				<a pButton routerLink="/tierlist/{{ tierlist.userId }}" size="large">
+					<i class="pi pi-book" pButtonIcon></i>
+					<span pButtonLabel>{{ tierlist.name }}</span>
+				</a>
+			}
+		</div>
+		} @else {
+			<p class="font-m">No existing Tierlists found.</p>
+		}
 	}
 </div>
