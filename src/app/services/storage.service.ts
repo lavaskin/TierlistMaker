@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 @Injectable({
 	providedIn: 'root'
 })
-export class TierlistService {
+export class StorageService {
 	private storageKeyPrefix = 'user-tierlist-';
 
 	/**
