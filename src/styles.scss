@@ -1,9 +1,8 @@
 @import "primeicons/primeicons.css";
+@import "app/variables";
 
 * {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-	$text-color: #FAF9F6;
 }
 
 .page {
@@ -21,6 +20,17 @@ a {
 	text-decoration: none;
 	color: var(--text-light);
 }
+
+.bold { font-weight: bold; }
+.italic { font-style: italic; }
+.no-wrap { white-space: nowrap; }
+
+.font-xs { font-size: $font-xs !important; }
+.font-s { font-size: $font-s !important; }
+.font-m { font-size: $font-m !important; }
+.font-l { font-size: $font-l !important; }
+.font-xl { font-size: $font-xl !important; }
+.font-xxl { font-size: $font-xxl !important; }
 
 //#region Shorthand Styles
 .mb-auto { margin-bottom: auto; }
