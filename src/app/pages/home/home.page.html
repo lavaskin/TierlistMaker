@@ -1,1 +1,10 @@
-<h1>Home</h1>
+<h1 class="font-l mb-2">Choose a Tierlist Template:</h1>
+
+<div class="flex row gap-2">
+	@for (tierlist of tierlists; track $index) {
+		<a pButton routerLink="/tierlist/{{ tierlist.id }}" size="large">
+			<i class="pi pi-book" pButtonIcon></i>
+			<span pButtonLabel>{{ tierlist.name }}</span>
+		</a>
+	}
+</div>
