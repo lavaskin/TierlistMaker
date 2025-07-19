@@ -120,8 +120,6 @@ export class TierlistPage {
 	}
 
 	public drop(event: CdkDragDrop<TierlistItemModel[]>): void {
-		console.log('Drop event:', event);
-
 		// Moving an item around within the tier
 		if (event.previousContainer == event.container) {
 			moveItemInArray(
@@ -149,7 +147,6 @@ export class TierlistPage {
 
 	public clickedTier(tier: TierlistTier): void {
 		this.selectedTier = tier;
-		console.log('Clicked tier:', tier);
 		this.showTierInfoDialog = true;
 	}
 
