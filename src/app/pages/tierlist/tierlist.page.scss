@@ -1,6 +1,4 @@
-@use '../../variables';
-
-$min-tier-height: 6.5rem;
+$min-tier-height: 7.25rem;
 $border-radius: 0.5rem;
 
 .tierlist {
@@ -8,14 +6,17 @@ $border-radius: 0.5rem;
 }
 
 .tier-label {
-	width: 6.5rem;
-	min-height: $min-tier-height;
-	color: variables.$text-dark;
+	position: relative;
+	min-width: 6.5rem;
+	min-height: $min-tier-height;	
 	border-radius: $border-radius;
+	height: 100% !important;
+	font-weight: bold;
+	text-transform: uppercase;
 }
 
 .tier-slot {
-	background-color: #212121;
 	min-height: $min-tier-height;
+	background-color: #212121;
 	border-radius: $border-radius;
 }

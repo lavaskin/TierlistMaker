@@ -22,23 +22,23 @@
 <!-- Tierlist Itself -->
 <div class="tierlist flex col gap-1 mb-2 w-100">
 	@for (tier of tierlist?.tiers; track $index) {
-		<div class="flex row gap-1 align-center">
+		<!-- Individual Tier Row -->
+		<div class="flex row gap-1">
 			<!-- Tier Name -->
-			 <div class="tier-label font-xl flex align-center justify-center"
+			 <p class="tier-label text-dark font-xl flex align-center justify-center"
 			 	[ngStyle]="{ 'backgroundColor': tier.color }">
-				{{ tier.label }}
-			</div>
+				<span>{{ tier.label }}</span>
+			</p>
 
 			<!-- Tier Items Slot -->
-			<div class="tier-slot flex-row gap-1 flex-wrap align-center justify-start w-100">
+			<div class="tier-slot flex row gap-1 pa-1 flex-wrap align-center justify-start w-100">
 				@for (item of tier.items; track item.id) {
 					<app-tile
 						[image]="item.thumbnail"
 						[title]="item.name"
 						class="cursor-pointer"
-						(click)="showItemVariations(item)" />
+						(click)="clickedTile(item)" />
 				}
-
 			</div>
 		</div>
 	}
@@ -51,7 +51,7 @@
 		<app-tile
 			[image]="item.thumbnail"
 			[title]="item.name"
-			(click)="showItemVariations(item)"
+			(click)="clickedTile(item)"
 			class="cursor-pointer" />
 	}
 </div>

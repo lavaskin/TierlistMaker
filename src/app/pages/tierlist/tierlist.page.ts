@@ -87,9 +87,18 @@ export class TierlistPage {
 		}).add(() => this.isLoadingDelete = false);
 	}
 
-	public showItemVariations(item: TierlistItemModel): void {
-		this.selectedItem = item;
-		this.selectedItemVariations.set(item.variations);
-		this.showVariations = true;
+	public clickedTile(item: TierlistItemModel): void {
+		// this.selectedItem = item;
+		// this.selectedItemVariations.set(item.variations);
+		// this.showVariations = true;
+
+		// Remove the tile from the tierlist items and add it to a random tier
+		if (!this.tierlist) return;
+		const index = this.tierlist.items.findIndex(i => i.id === item.id);
+		if (index !== -1) {
+			const [removed] = this.tierlist.items.splice(index, 1);
+			const randomTier = Math.floor(Math.random() * this.tierlist.tiers!.length);
+			this.tierlist.tiers![randomTier].items!.push(removed);
+		}
 	}
 }
