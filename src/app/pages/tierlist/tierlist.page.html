@@ -1,1 +1,37 @@
-<h1>Tierlist</h1>
+@if (!isLoading) {
+<div class="flex row justify-between mb-3">
+	<p class="font-xl">{{ tierlist?.name }}</p>
+
+	<div class="flex row gap-2">
+		<p-button
+			label="Save"
+			(click)="save()"
+			[loading]="isLoadingSave"
+			severity="info"
+			icon="pi pi-save" />
+		<p-button
+			label="Delete"
+			(click)="delete()"
+			[loading]="isLoadingDelete"
+			severity="danger"
+			icon="pi pi-trash" />
+	</div>
+</div>
+
+<!-- Tierlist Itself -->
+<!-- ... -->
+
+<!-- Tierlist Items -->
+<!-- ... -->
+<div class="flex row gap-1 flex-wrap">
+	@for (item of tierlist?.items; track $index) {
+		<app-tile
+			[image]="item.thumbnail"
+			[title]="item.name"
+			(clickAction)="showItemVariations(item)"
+			class="cursor-pointer" />
+	}
+</div>
+} @else {
+	<app-spinner></app-spinner>
+}
