@@ -9,11 +9,11 @@ const baTierList: TierlistModel = {
 	name: "Blue Archive",
 	defaultTiers: [
 		{ label: '😭', color: '#ff0000' },
-		{ label: 'A', color: '#ff7f00' },
+		{ label: 'A', color: '#f15b4c' },
 		{ label: 'B', color: '#ef5b70' },
-		{ label: 'C', color: '#00ff00' },
-		{ label: 'D', color: '#f15b4c' },
-		{ label: 'F', color: '#e93f33' },
+		{ label: 'C', color: '#d35d90' },
+		{ label: 'D', color: '#9b6b9c' },
+		{ label: 'F', color: '#c39ec9' },
 	],
 	items: [
 		{
