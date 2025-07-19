@@ -11,13 +11,17 @@ export class StorageService {
 	/**
 	 * Retrieves the tierlist for a specific user.
 	 * @param userId The user ID to retrieve the tierlist for
-	 * @returns An observable containing the tierlist or null if not found
+	 * @returns An observable containing the tierlist
 	 */
-	public get(userId: number): Observable<TierlistModel | null> {
+	public get(userId: number): Observable<TierlistModel> {
 		const tierlist = this._getFromLocalStorage(userId);
 
-		return new Observable<TierlistModel | null>((observer) => {
-			observer.next(tierlist);
+		return new Observable<TierlistModel>((observer) => {
+			if (!tierlist) {
+				observer.error(new Error(`Tierlist with userId ${userId} not found`));
+			} else {
+				observer.next(tierlist);
+			}
 			observer.complete();
 		});
 	}

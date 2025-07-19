@@ -1,11 +1,11 @@
-import { CdkDrag, CdkDragPlaceholder } from '@angular/cdk/drag-drop';
+import { CdkDragPlaceholder } from '@angular/cdk/drag-drop';
 import { Component, Input } from '@angular/core';
 import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
 	selector: 'app-tile',
 	imports: [
-		CdkDragPlaceholder, CdkDrag,
+		CdkDragPlaceholder,
 		TooltipModule,
 	],
 	templateUrl: './tile.component.html',

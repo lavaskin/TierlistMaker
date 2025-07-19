@@ -60,19 +60,15 @@ export class TierlistPage {
 
 			this.isLoading = true;
 			this._storage.get(tierlistUserId).subscribe({
-				next: (tierlist: TierlistModel | null) => {
-					if (!tierlist) {
-						this._alerts.showError('Tierlist not found.', 'Not Found');
-						this._router.navigate(['/create']);
-						return;
-					}
-					
+				next: (tierlist: TierlistModel) => {
 					this.tierlist = tierlist as TierlistModel;
 					this._checkCanReset();
 				},
 				error: () => {
-					this._alerts.showError('Failed to load tierlist.');
-				}
+					this._alerts.showError('Tierlist not found.', 'Not Found');
+					this._router.navigate(['/create']);
+
+				},
 			}).add(() => this.isLoading = false);
 		});
 	}
