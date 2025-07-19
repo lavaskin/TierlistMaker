@@ -26,7 +26,6 @@ export class TemplateService {
 
 		// Copy the default tiers onto the user tiers, and init the tierlist items1
 		const tierlistCopy = deepCopy(tierlist);
-		console.log("TemplateService.get", tierlistCopy);
 		if (!tierlistCopy.defaultTiers) {
 			tierlistCopy.defaultTiers = this._defaultTiers;
 		}

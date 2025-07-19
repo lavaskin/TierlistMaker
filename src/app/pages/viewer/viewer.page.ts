@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TileComponent } from '@app/components/tile/tile.component';
 import { TierlistModel } from '@app/models/tierlist.model';
+import { AlertService } from '@app/services/alert.service';
 import { TemplateService } from '@app/services/template.service';
 
 @Component({
@@ -19,6 +20,7 @@ export class ViewerPage {
 
 	private _route = inject(ActivatedRoute);
 	private _templates = inject(TemplateService);
+	private _alerts = inject(AlertService);
 
 	ngOnInit() {
 		this._route.params.subscribe(params => {
@@ -30,7 +32,7 @@ export class ViewerPage {
 					this.tierlist = tierlist;
 				},
 				error: (err) => {
-					console.error('Error fetching tierlist:', err);
+					this._alerts.showError('Failed to load template.');
 				}
 			});
 		});
