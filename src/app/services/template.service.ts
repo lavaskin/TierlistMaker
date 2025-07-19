@@ -17,7 +17,18 @@ export class TemplateService {
 			throw new Error(`Template with id ${templateId} not found`);
 		}
 
+		// Copy the default tiers onto the user tiers, and init the tierlist items1
 		const tierlistCopy = deepCopy(tierlist);
+		if (tierlistCopy.defaultTiers) {
+			tierlistCopy.tiers = deepCopy(tierlistCopy.defaultTiers);
+
+			// Add empty array for items
+			tierlistCopy.tiers.forEach((tier: any) => {
+				tier.items = [];
+			});
+		}
+
+		// Return the tierlist
 		return new Observable<TierlistModel>((observer) => {
 			observer.next(tierlistCopy);
 			observer.complete();
