@@ -1,5 +1,12 @@
-<img class="pointer"
-	src="{{ image }}"
-	alt="{{ title }}"
-	[pTooltip]="title"
-	tooltipPosition="top" />
+<div class="pointer">
+	<img
+		src="{{ image }}"
+		alt="{{ title }}"
+		[pTooltip]="title"
+		tooltipPosition="top" />
+	<img *cdkDragPlaceholder class="placeholder"
+		src="{{ image }}"
+		alt="{{ title }}"
+		[pTooltip]="title"
+		tooltipPosition="top" />
+</div>
