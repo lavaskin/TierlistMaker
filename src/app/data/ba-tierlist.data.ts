@@ -522,9 +522,596 @@ const baTierListData: TierlistModel = {
 				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/a/a0/Koyuki_00.png', },
 			],
 		},
-
-		// ...
-
+		{
+			name: 'Maki',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Camping', image: '', },
+			],
+		},
+		{
+			name: 'Makoto',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Idol', image: '', },
+				{ name: 'Sportswear', image: '', },
+			],
+		},
+		{
+			name: 'Mari',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Marina',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Qipao', image: '', },
+			],
+		},
+		{
+			name: 'Mashiro',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Swimsuit', image: '', },
+			],
+		},
+		{
+			name: 'Megu',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Meru',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Michiru',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Midori',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Maid', image: '', },
+			],
+		},
+		{
+			name: 'Mika',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Mimori',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Swimsuit', image: '', },
+			],
+		},
+		{
+			name: 'Mina',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Mine',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Idol', image: '', },
+			],
+		},
+		{
+			name: 'Minori',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Misaka Mikoto',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Misaki',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Miyako',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Swimsuit', image: '', },
+			],
+		},
+		{
+			name: 'Miyu',
+			age: 15,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/a/ac/Miyu.png/266px-Miyu.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/d/d7/Miyu_diorama_00.png', },
+				{ name: 'Swimsuit', image: 'https://static.wikitide.net/bluearchivewiki/d/d7/Miyu_%28Swimsuit%29_00.png', },
+			],
+		},
+		{
+			name: 'Moe',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Swimsuit', image: '', },
+			],
+		},
+		{
+			name: 'Momiji',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Momoi',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Maid', image: '', },
+			],
+		},
+		{
+			name: 'Mutsuki',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'New Year', image: '', },
+			],
+		},
+		{
+			name: 'Nagisa',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: '', image: '', },
+			],
+		},
+		{
+			name: 'Nagusa',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: '', image: '', },
+			],
+		},
+		{
+			name: 'Natsu',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Band', image: '', },
+			],
+		},
+		{
+			name: 'Neru',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Bunny Girl', image: '', },
+				{ name: 'School Uniform', image: '', },
+			],
+		},
+		{
+			name: 'Niya',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Noa',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Pajama', image: '', },
+			],
+		},
+		{
+			name: 'Nodoka',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Hot Spring', image: '', },
+			],
+		},
+		{
+			name: 'Nonomi',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Swimsuit', image: '', },
+			],
+		},
+		{
+			name: 'Nozomi',
+			age: 15,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/0/0b/Nozomi.png/266px-Nozomi.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/8/87/Nozomi_00.png', },
+			],
+		},
+		{
+			name: 'Pina',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Guide', image: '', },
+			],
+		},
+		{
+			name: 'Rei',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Reijo',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Reisa',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Renge',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Swimsuit', image: '', },
+			],
+		},
+		{
+			name: 'Rio',
+			age: 17,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/4/4a/Rio.png/266px-Rio.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/b/b2/Rio_00.png', },
+			],
+		},
+		{
+			name: 'Rumi',
+			age: 17,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/7/7d/Rumi.png/266px-Rumi.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/b/b9/Rumi_00.png', },
+			],
+		},
+		{
+			name: 'Saki',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Swimsuit', image: '', },
+			],
+		},
+		{
+			name: 'Sakurako',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Idol', image: '', },
+			],
+		},
+		{
+			name: 'Saori',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+				{ name: 'Dress', image: '', },
+				{ name: 'Swimsuit', image: '', },
+			],
+		},
+		{
+			name: 'Saten Ruiko',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Satsuki',
+			age: 0,
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '', },
+			],
+		},
+		{
+			name: 'Saya',
+			age: 16,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/c/ce/Saya.png/266px-Saya.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/2/28/Saya_00.png', },
+				{ name: 'Casual', image: 'https://static.wikitide.net/bluearchivewiki/e/ef/Saya_%28Casual%29_00.png', },
+			],
+		},
+		{
+			name: 'Seia',
+			age: 17,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/4/46/Seia.png/266px-Seia.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/7/74/Seia_00.png', },
+				{ name: 'Box', image: 'https://static.wikitide.net/bluearchivewiki/9/95/Seia_%28Box%29_00.png', },
+			],
+		},
+		{
+			name: 'Sena',
+			age: 17,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/f/f4/Sena.png/266px-Sena.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/1/10/Sena_00.png', },
+				{ name: 'Casual', image: 'https://static.wikitide.net/bluearchivewiki/8/81/Sena_%28Casual%29_diorama_00.png', },
+			],
+		},
+		{
+			name: 'Serika',
+			age: 15,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/c/c8/Serika.png/266px-Serika.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/b/b0/Serika_00.png', },
+				{ name: 'New Year', image: 'https://static.wikitide.net/bluearchivewiki/9/90/Serika_%28New_Year%29_00.png', },
+				{ name: 'Swimsuit', image: 'https://static.wikitide.net/bluearchivewiki/0/0c/Serika_%28Swimsuit%29_00.png', },
+			],
+		},
+		{
+			name: 'Serina',
+			age: 16,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/4/41/Serina.png/266px-Serina.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/f/f4/Serina_00.png', },
+				{ name: 'Christmas', image: 'https://static.wikitide.net/bluearchivewiki/1/15/Serina_%28Christmas%29_diorama_00.png', },
+			],
+		},
+		{
+			name: 'Shigure',
+			age: 16,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/d/da/Shigure.png/266px-Shigure.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/7/71/Shigure_00.png', },
+				{ name: 'Hot Spring', image: 'https://static.wikitide.net/bluearchivewiki/2/26/Shigure_%28Hot_Spring%29_diorama_00.png', },
+			],
+		},
+		{
+			name: 'Shimiko',
+			age: 15,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/f/f4/Shimiko.png/266px-Shimiko.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/a/a3/Shimiko_00.png', },
+			],
+		},
+		{
+			name: 'Shiroko',
+			age: 16,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/6/63/Shiroko.png/266px-Shiroko.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/0/0a/Shiroko_00.png', },
+				{ name: 'Riding', image: 'https://static.wikitide.net/bluearchivewiki/8/81/Shiroko_%28Riding%29_00.png', },
+				{ name: 'Swimsuit', image: 'https://static.wikitide.net/bluearchivewiki/5/5d/Shiroko_%28Swimsuit%29_00.png', },
+			],
+		},
+		{
+			name: 'Shiroko * Terror',
+			age: 17,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/f/f9/Shiroko%EF%BC%8ATerror.png/266px-Shiroko%EF%BC%8ATerror.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/6/69/Shiroko%EF%BC%8ATerror_00.png', },
+			],
+		},
+		{
+			name: 'Shizuko',
+			age: 16,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/7/77/Shizuko.png/266px-Shizuko.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/9/9e/Shizuko_00.png', },
+				{ name: 'Swimsuit', image: 'https://static.wikitide.net/bluearchivewiki/1/18/Shizuko_%28Swimsuit%29_diorama_00.png', },
+			],
+		},
+		{
+			name: 'Shokuhou Misaki',
+			age: 14,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/6/66/Shokuhou_Misaki.png/266px-Shokuhou_Misaki.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/f/f7/Shokuhou_Misaki_00.png', },
+			],
+		},
+		{
+			name: 'Shun',
+			//age: 'Top Secret',
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/1/17/Shun.png/266px-Shun.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/9/9b/Shun_00.png', },
+			],
+		},
+		{
+			name: 'Shun (Kid)',
+			//age: 'Top Secret',
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/5/53/Shun_%28Kid%29.png/266px-Shun_%28Kid%29.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/9/91/Shun_%28Kid%29_diorama_00.png', },
+			],
+		},
+		{
+			name: 'Sumire',
+			age: 16,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/d/d6/Sumire.png/266px-Sumire.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/thumb/6/6c/Sumire_00.png/800px-Sumire_00.png', },
+				{ name: 'Part-Timer', image: 'https://static.wikitide.net/bluearchivewiki/5/5e/Sumire_%28Part-Timer%29_00.png', },
+			],
+		},
+		{
+			name: 'Suzumi',
+			age: 16,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/0/07/Suzumi.png/266px-Suzumi.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/d/dc/Suzumi_00.png', },
+			],
+		},
+		{
+			name: 'Toki',
+			age: 16,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/e/e4/Toki.png/266px-Toki.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/f/f2/Toki_00.png', },
+				{ name: 'Bunny Girl', image: 'https://static.wikitide.net/bluearchivewiki/d/d2/Toki_%28Bunny_Girl%29_00.png', },
+			],
+		},
+		{
+			name: 'Tomoe',
+			age: 17,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/0/0a/Tomoe.png/266px-Tomoe.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/8/8c/Tomoe_00.png', },
+				{ name: 'Qipao', image: 'https://static.wikitide.net/bluearchivewiki/7/73/Tomoe_%28Qipao%29_00.png', },
+			],
+		},
+		{
+			name: 'Tsubaki',
+			age: 16,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/6/6a/Tsubaki.png/266px-Tsubaki.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/thumb/a/a5/Tsubaki_00.png/1024px-Tsubaki_00.png', },
+				{ name: 'Guide', image: 'https://static.wikitide.net/bluearchivewiki/3/32/Tsubaki_%28Guide%29_00.png', },
+			],
+		},
+		{
+			name: 'Tsukuyo',
+			age: 15,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/c/ce/Tsukuyo.png/266px-Tsukuyo.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/e/e7/Tsukuyo_00.png', },
+			],
+		},
+		{
+			name: 'Tsurugi',
+			age: 17,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/c/c1/Tsurugi.png/266px-Tsurugi.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/thumb/2/29/Tsurugi_00.png/1024px-Tsurugi_00.png', },
+				{ name: 'Swimsuit', image: 'https://static.wikitide.net/bluearchivewiki/0/00/Tsurugi_%28Swimsuit%29_diorama_00.png', },
+			],
+		},
+		{
+			name: 'Ui',
+			age: 17,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/1/18/Ui.png/266px-Ui.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/d/dc/Ui_00.png', },
+				{ name: 'Swimsuit', image: 'https://static.wikitide.net/bluearchivewiki/d/d2/Ui_%28Swimsuit%29_diorama_00.png', },
+			],
+		},
+		{
+			name: 'Umika',
+			age: 15,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/e/e2/Umika.png/266px-Umika.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/8/82/Umika_00.png', },
+			],
+		},
+		{
+			name: 'Utaha',
+			age: 17,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/3/37/Utaha.png/266px-Utaha.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/thumb/4/4d/Utaha_00.png/800px-Utaha_00.png', },
+				{ name: 'Cheerleader', image: 'https://static.wikitide.net/bluearchivewiki/3/36/Utaha_%28Cheerleader%29_diorama_00.png', },
+			],
+		},
+		{
+			name: 'Wakamo',
+			age: 18,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/a/a7/Wakamo.png/266px-Wakamo.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/a/ab/Wakamo_00.png', },
+				{ name: 'Swimsuit', image: 'https://static.wikitide.net/bluearchivewiki/1/16/Wakamo_%28Swimsuit%29_diorama_00.png', },
+			],
+		},
+		{
+			name: 'Yoshimi',
+			age: 15,
+			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/c/c2/Yoshimi.png/266px-Yoshimi.png',
+			variations: [
+				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/6/60/Yoshimi_00.png', },
+				{ name: 'Band', image: 'https://static.wikitide.net/bluearchivewiki/8/80/Yoshimi_%28Band%29_00.png', },
+			],
+		},
 		{
 			name: 'Yukari',
 			age: 15,
