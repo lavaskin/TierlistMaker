@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, model } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SpinnerComponent } from '@app/components/spinner/spinner.component';

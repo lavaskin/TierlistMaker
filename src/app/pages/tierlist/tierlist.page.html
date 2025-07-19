@@ -80,7 +80,7 @@
 	[(visible)]="showDeleteDialog"
 	header="Confirm Delete"
 	[modal]="true"
-	[closable]="true"
+	[closable]="false"
 	[resizable]="false">
 	
 	<p class="mb-4">Are you sure you want to delete this tierlist?</p>
@@ -97,8 +97,8 @@
 	[(visible)]="showVariationsDialog"
 	[header]="selectedItem?.name + ' Variations'"
 	[modal]="true"
-	[closable]="true"
-	[resizable]="false">
+	[resizable]="true"
+	[dismissableMask]="true">
 	
 	<div class="flex col align-center">
 		<p-galleria *ngIf="selectedItemVariations.length > 0"
@@ -112,13 +112,19 @@
 			[showThumbnails]="selectedItemVariations.length > 1">
 
 			<ng-template #item let-item>
-				<img [src]="item.image" [alt]="item.name" style="height: 45rem; display: block;" />
+				<img [src]="item.image"
+					[alt]="selectedItem?.name + ' (' + item.name + ')'"
+					class="unselectable"
+					style="height: 45rem; display: block;" />
 			</ng-template>
 			<ng-template #caption let-item *ngIf="selectedItemVariations.length > 1">
 				<div class="font-xl font-bold">{{ item.name }}</div>
 			</ng-template>
 			<ng-template #thumbnail let-item>
-				<img [src]="item.image" style="height:10rem; display: block" />
+				<img [src]="item.image"
+					[alt]="selectedItem?.name + ' (' + item.name + ') Thumbnail'"
+					class="unselectable"
+					style="height:10rem; display: block" />
 			</ng-template>
 		</p-galleria>
 	</div>
@@ -129,8 +135,8 @@
 	[(visible)]="showTierInfoDialog"
 	[header]="selectedTier.label"
 	[modal]="true"
-	[closable]="true"
-	[resizable]="false">
+	[resizable]="false"
+	[dismissableMask]="true">
 
 	<div class="flex col align-center gap-2">
 		<p-floatlabel variant="in">
