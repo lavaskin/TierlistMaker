@@ -19,42 +19,50 @@
 	</div>
 </div>
 
-<!-- Tierlist Itself -->
-<div class="tierlist flex col gap-1 mb-2 w-100">
-	@for (tier of tierlist?.tiers; track $index) {
-		<!-- Individual Tier Row -->
-		<div class="flex row gap-1">
-			<!-- Tier Name -->
-			 <p class="tier-label text-dark font-xl flex align-center justify-center"
-			 	[ngStyle]="{ 'backgroundColor': tier.color }">
-				<span>{{ tier.label }}</span>
-			</p>
 
-			<!-- Tier Items Slot -->
-			<div class="tier-slot flex row gap-1 pa-1 flex-wrap align-center justify-start w-100">
-				@for (item of tier.items; track item.id) {
-					<app-tile
-						[image]="item.thumbnail"
-						[title]="item.name"
-						class="cursor-pointer"
-						(click)="clickedTile(item)" />
-				}
+<div class="drag-boundary" cdkDropListGroup>
+	<!-- Tierlist Itself -->
+	<div class="tierlist flex col gap-1 mb-2 w-100">
+		@for (tier of tierlist?.tiers; track $index) {
+			<!-- Individual Tier Row -->
+			<div class="flex row gap-1">
+				<!-- Tier Name -->
+				<p class="tier-label text-dark font-xl flex align-center justify-center"
+					[ngStyle]="{ 'backgroundColor': tier.color }">
+					<span>{{ tier.label }}</span>
+				</p>
+
+				<!-- Tier Items Slot -->
+				<div class="item-container flex row gap-1 pa-1 flex-wrap align-center justify-start w-100"
+					cdkDropList [cdkDropListData]="tier.items!" (cdkDropListDropped)="drop($event)">
+
+					@for (item of tier.items; track item.id) {
+						<app-tile cdkDrag cdkDragBoundary=".drag-boundary"
+							[image]="item.thumbnail"
+							[title]="item.name"
+							class="cursor-pointer"
+							(click)="clickedTile(item)" />
+					}
+				</div>
 			</div>
-		</div>
-	}
+		}
+	</div>
+
+	<!-- Tierlist Items -->
+	<!-- ... -->
+	<div class="item-container flex row gap-1 flex-wrap w-100 pa-1"
+		cdkDropList [cdkDropListData]="tierlist?.items!" (cdkDropListDropped)="drop($event)">
+
+		@for (item of tierlist?.items; track $index) {
+			<app-tile cdkDrag cdkDragBoundary=".drag-boundary"
+				[image]="item.thumbnail"
+				[title]="item.name"
+				(click)="clickedTile(item)"
+				class="cursor-pointer" />
+		}
+	</div>
 </div>
 
-<!-- Tierlist Items -->
-<!-- ... -->
-<div class="flex row gap-1 flex-wrap">
-	@for (item of tierlist?.items; track $index) {
-		<app-tile
-			[image]="item.thumbnail"
-			[title]="item.name"
-			(click)="clickedTile(item)"
-			class="cursor-pointer" />
-	}
-</div>
 } @else {
 	<app-spinner></app-spinner>
 }

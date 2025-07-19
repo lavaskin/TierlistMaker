@@ -11,11 +11,12 @@ import { StorageService } from '@app/services/storage.service';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { GalleriaModule } from 'primeng/galleria';
+import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
 	selector: 'page-tierlist',
 	imports: [
-		CommonModule, FormsModule,
+		CommonModule, FormsModule, CdkDrag, CdkDropList, CdkDropListGroup,
 		TileComponent, SpinnerComponent,
 		ButtonModule, DialogModule, GalleriaModule,
 	],
@@ -33,6 +34,8 @@ export class TierlistPage {
 
 	public showDeleteDialog: boolean = false;
 	public showVariations: boolean = false;
+
+	public canReset: boolean = false;
 
 	private _route = inject(ActivatedRoute);
 	private _router = inject(Router);
@@ -89,9 +92,36 @@ export class TierlistPage {
 		}).add(() => this.isLoadingDelete = false);
 	}
 
+	public drop(event: CdkDragDrop<TierlistItemModel[]>): void {
+		console.log('Drop event:', event);
+
+		// Moving an item around within the tier
+		if (event.previousContainer == event.container) {
+			moveItemInArray(
+				event.container.data,
+				event.previousIndex,
+				event.currentIndex,
+			);
+		} else {
+			transferArrayItem(
+				event.previousContainer.data,
+				event.container.data,
+				event.previousIndex,
+				event.currentIndex,
+			);
+
+			this._checkCanReset();
+		}
+	}
+
 	public clickedTile(item: TierlistItemModel): void {
 		this.selectedItem = item;
 		this.selectedItemVariations.set(item.variations);
-		this.showVariations = true;
+		// this.showVariations = true;
+	}
+
+	private _checkCanReset(): void {
+		// Check if any of the tiers have items inside them
+		this.canReset = this.tierlist?.tiers?.some(tier => tier.items && tier.items.length > 0) || false;
 	}
 }

@@ -1,5 +1,6 @@
 $min-tier-height: 6.5rem;
 $border-radius: 0.5rem;
+$foreground-color: #212121;
 
 .tierlist {
 	// ...
@@ -15,8 +16,8 @@ $border-radius: 0.5rem;
 	justify-content: center;
 }
 
-.tier-slot {
+.item-container {
 	min-height: $min-tier-height;
-	background-color: #212121;
+	background-color: $foreground-color;
 	border-radius: $border-radius;
 }
