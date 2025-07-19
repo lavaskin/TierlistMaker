@@ -155,15 +155,16 @@ export class TierlistPage {
 
 	public deleteTier(tier: TierlistTier): void {
 		const index = this.tierlist?.tiers?.indexOf(tier);
-		if (index !== undefined && index >= 0) {
-			// Add the tiers items into the main list
-			const tierItems = this.tierlist!.tiers![index].items || [];
-			this.tierlist!.items.push(...tierItems);
+		if (index === undefined || index < 0) return;
 
-			// Delete the tier
-			this.tierlist!.tiers!.splice(index, 1);
-			this._checkCanReset();
-		}
+		// Add the tiers items into the main list
+		const tierItems = this.tierlist!.tiers![index].items || [];
+		this.tierlist!.items.push(...tierItems);
+
+		// Delete the tier
+		this.tierlist!.tiers!.splice(index, 1);
+		this.showTierInfoDialog = false;
+		this._checkCanReset();
 	}
 
 	private _checkCanReset(): void {
