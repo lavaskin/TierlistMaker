@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SpinnerComponent } from '@app/components/spinner/spinner.component';
 import { TileComponent } from '@app/components/tile/tile.component';
 import { TierlistItemModel, TierlistItemVariation } from '@app/models/tierlist-item.model';
-import { TierlistModel } from '@app/models/tierlist.model';
+import { TierlistModel, TierlistTier } from '@app/models/tierlist.model';
 import { AlertService } from '@app/services/alert.service';
 import { StorageService } from '@app/services/storage.service';
 import { ButtonModule } from 'primeng/button';
@@ -13,13 +13,16 @@ import { DialogModule } from 'primeng/dialog';
 import { GalleriaModule } from 'primeng/galleria';
 import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TemplateService } from '@app/services/template.service';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { ColorPickerModule } from 'primeng/colorpicker';
 
 @Component({
 	selector: 'page-tierlist',
 	imports: [
 		CommonModule, FormsModule, CdkDrag, CdkDropList, CdkDropListGroup,
 		TileComponent, SpinnerComponent,
-		ButtonModule, DialogModule, GalleriaModule,
+		ButtonModule, DialogModule, GalleriaModule, InputTextModule, FloatLabelModule, ColorPickerModule,
 	],
 	templateUrl: './tierlist.page.html',
 	styleUrl: './tierlist.page.scss',
@@ -30,11 +33,15 @@ export class TierlistPage {
 	public isLoadingDelete: boolean = false;
 
 	public tierlist?: TierlistModel;
+
+	public showDeleteDialog: boolean = false;
+
+	public showVariationsDialog: boolean = false;
 	public selectedItem?: TierlistItemModel;
 	public selectedItemVariations = model<TierlistItemVariation[]>([]);
 
-	public showDeleteDialog: boolean = false;
-	public showVariations: boolean = false;
+	public showTierInfoDialog: boolean = false;
+	public selectedTier?: TierlistTier;
 
 	public canReset: boolean = false;
 
@@ -53,6 +60,7 @@ export class TierlistPage {
 				next: (tierlist: TierlistModel | null) => {
 					if (!tierlist) {
 						this._alerts.showError('Tierlist not found.', 'Not Found');
+						this._router.navigate(['/create']);
 						return;
 					}
 					
@@ -141,6 +149,7 @@ export class TierlistPage {
 
 	public clickedTier(tier: TierlistTier): void {
 		this.selectedTier = tier;
+		console.log('Clicked tier:', tier);
 		this.showTierInfoDialog = true;
 	}
 
@@ -159,6 +168,13 @@ export class TierlistPage {
 
 	private _checkCanReset(): void {
 		// Check if any of the tiers have items inside them
-		this.canReset = this.tierlist?.tiers?.some(tier => tier.items && tier.items.length > 0) || false;
+		const tiersHaveItems = this.tierlist?.tiers?.some(tier => tier.items && tier.items.length > 0) || false;
+		const tiersDontMatchTemplate = this.tierlist?.tiers?.some((tier, index) => {
+			const templateTier = this.tierlist?.defaultTiers?.[index];
+			return !templateTier || tier.label !== templateTier.label || tier.color !== templateTier.color;
+		}) || false;
+		const defaultTiersMissing = this.tierlist?.defaultTiers?.length !== this.tierlist?.tiers?.length;
+
+		this.canReset = tiersHaveItems || tiersDontMatchTemplate || defaultTiersMissing;
 	}
 }

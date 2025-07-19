@@ -7,11 +7,15 @@ $foreground-color: #212121;
 }
 
 .tier-label {
-	min-width: $min-tier-height;
+	width: 100%;
+	max-width: $min-tier-height;
 	min-height: $min-tier-height;	
 	border-radius: $border-radius;
 	font-weight: bold;
 	text-transform: uppercase;
+	overflow-wrap: break-word;
+	text-align: center;
+
 	// !IMPORTANT: This is what makes the tier label grow to the full height of the tier row
 	justify-content: center;
 }
