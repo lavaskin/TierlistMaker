@@ -5,7 +5,7 @@ export interface TierlistItemModel {
 	variations: TierlistItemVariation[],
 }
 
-interface TierlistItemVariation {
+export interface TierlistItemVariation {
 	name: string,
 	image: string,
 }
