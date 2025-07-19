@@ -17,6 +17,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { TooltipModule } from 'primeng/tooltip';
+import { deepCopy } from '@app/utils';
 
 @Component({
 	selector: 'page-tierlist',
@@ -39,7 +40,8 @@ export class TierlistPage {
 
 	public showVariationsDialog: boolean = false;
 	public selectedItem?: TierlistItemModel;
-	public selectedItemVariations = model<TierlistItemVariation[]>([]);
+	public galleryIndex: number = 0;
+	public selectedItemVariations: TierlistItemVariation[] = [];
 
 	public showTierInfoDialog: boolean = false;
 	public selectedTier?: TierlistTier;
@@ -141,9 +143,17 @@ export class TierlistPage {
 	}
 
 	public clickedTile(item: TierlistItemModel): void {
+		this.galleryIndex = 0;
 		this.selectedItem = item;
-		this.selectedItemVariations.set(item.variations);
-		// this.showVariations = true;
+		this.selectedItemVariations = [];		
+		this.showVariationsDialog = true;
+
+		// This is needed as a hack to ensure that the correct amount of variations are shown
+		// in the thumbnails of the galleria. For example, if you clicked a 2 variation item and then a 3, the
+		// third variation wouldn't appear as a thumbnail otherwise
+		setTimeout(() => {
+			this.selectedItemVariations = deepCopy(item.variations);
+		});
 	}
 
 	public clickedTier(tier: TierlistTier): void {

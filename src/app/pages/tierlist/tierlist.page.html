@@ -42,7 +42,7 @@
 
 				<!-- Tier Items Slot -->
 				<div class="item-container flex row gap-1 pa-1 flex-wrap align-center justify-start w-100"
-					cdkDropList [cdkDropListData]="tier.items!" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+					cdkDropList [cdkDropListData]="tier.items!" cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event)">
 
 					@for (item of tier.items; track item.id) {
 						<app-tile cdkDrag cdkDragBoundary=".drag-boundary"
@@ -59,7 +59,7 @@
 	<!-- Tierlist Items -->
 	<!-- ... -->
 	<div class="item-container flex row gap-1 flex-wrap w-100 pa-1"
-		cdkDropList [cdkDropListData]="tierlist?.items!" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+		cdkDropList [cdkDropListData]="tierlist?.items!" cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event)">
 
 		@for (item of tierlist?.items; track $index) {
 			<app-tile cdkDrag cdkDragBoundary=".drag-boundary"
@@ -96,22 +96,32 @@
 <p-dialog
 	[(visible)]="showVariationsDialog"
 	[header]="selectedItem?.name + ' Variations'"
-	[style]="{ width: '50vw' }"
 	[modal]="true"
 	[closable]="true"
 	[resizable]="false">
 	
-	<!-- <p-galleria [(value)]="selectedItemVariations" [numVisible]="5">
-		<ng-template #item let-item>
-			<img [src]="item.image" [alt]="item.name" style="width: 100%; display: block;" />
-		</ng-template>
-		<ng-template #thumbnail let-item>
-			<img [src]="item.image" style="display: block;" />
-		</ng-template>
-		<ng-template #caption let-item>
-			<div class="font-xl mb-2 font-bold">{{ item.name }}</div>
-		</ng-template>
-	</p-galleria> -->
+	<div class="flex col align-center">
+		<p-galleria *ngIf="selectedItemVariations.length > 0"
+			[value]="selectedItemVariations"
+			[(activeIndex)]="galleryIndex"
+			[numVisible]="5"
+			[containerStyle]="{ 'min-width': '40rem' }"
+			[circular]="true"
+			[showItemNavigatorsOnHover]="true"
+			[showItemNavigators]="selectedItemVariations.length > 1"
+			[showThumbnails]="selectedItemVariations.length > 1">
+
+			<ng-template #item let-item>
+				<img [src]="item.image" [alt]="item.name" style="height: 45rem; display: block;" />
+			</ng-template>
+			<ng-template #caption let-item *ngIf="selectedItemVariations.length > 1">
+				<div class="font-xl font-bold">{{ item.name }}</div>
+			</ng-template>
+			<ng-template #thumbnail let-item>
+				<img [src]="item.image" style="height:10rem; display: block" />
+			</ng-template>
+		</p-galleria>
+	</div>
 </p-dialog>
 
 <!-- Edit Tier Info Dialog -->
