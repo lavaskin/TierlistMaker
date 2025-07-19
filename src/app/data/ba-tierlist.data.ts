@@ -4,7 +4,7 @@ import { TierlistModel } from "@app/models/tierlist.model";
 
 // Info from: https://bluearchive.wiki/wiki/Characters
 
-const baTierList: TierlistModel = {
+const baTierListData: TierlistModel = {
 	templateId: TierlistIds.BlueArchive,
 	name: "Blue Archive",
 	defaultTiers: [
@@ -569,11 +569,11 @@ const baTierList: TierlistModel = {
 }
 
 // Add an id to all characters
-baTierList.items.forEach((item, index) => {
+baTierListData.items.forEach((item, index) => {
 	item.id = index + 1; // Assigning a unique id starting from 1
 });	
 
 // Sort the characters by name
-baTierList.items.sort((a, b) => a.name.localeCompare(b.name));
+baTierListData.items.sort((a, b) => a.name.localeCompare(b.name));
 
-export default baTierList;
+export default baTierListData;

@@ -1,5 +1,5 @@
 export interface TierlistItemModel {
-	id: number,
+	id?: number,
 	name: string,
 	thumbnail: string,
 	variations: TierlistItemVariation[],
