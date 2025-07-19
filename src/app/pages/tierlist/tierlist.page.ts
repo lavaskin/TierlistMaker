@@ -16,13 +16,14 @@ import { TemplateService } from '@app/services/template.service';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
 	selector: 'page-tierlist',
 	imports: [
 		CommonModule, FormsModule, CdkDrag, CdkDropList, CdkDropListGroup,
 		TileComponent, SpinnerComponent,
-		ButtonModule, DialogModule, GalleriaModule, InputTextModule, FloatLabelModule, ColorPickerModule,
+		ButtonModule, DialogModule, GalleriaModule, InputTextModule, FloatLabelModule, ColorPickerModule, TooltipModule,
 	],
 	templateUrl: './tierlist.page.html',
 	styleUrl: './tierlist.page.scss',
