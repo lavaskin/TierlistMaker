@@ -19,12 +19,35 @@ export class TemplateService {
 	];
 
 	public get(templateId: number): Observable<TierlistModel> {
-		const tierlist = this._templates.find(t => t.templateId == templateId);
-		if (!tierlist) {
+		const foundTemplate = this._templates.find(t => t.templateId == templateId);
+		if (!foundTemplate) {
 			throw new Error(`Template with id ${templateId} not found`);
 		}
 
-		// Copy the default tiers onto the user tiers, and init the tierlist items1
+		// Return the tierlist after initializing its tiers
+		const template = this._initializeTiers(foundTemplate);
+		return new Observable<TierlistModel>((observer) => {
+			observer.next(template);
+			observer.complete();
+		});
+	}
+
+	public getAll(): Observable<TierlistModel[]> {
+		const templatesCopy = deepCopy(this._templates);
+
+		// Initialize the tiers for each template
+		templatesCopy.forEach((template: TierlistModel, index: number) => {
+			templatesCopy[index] = this._initializeTiers(template);
+		});
+
+		return new Observable<TierlistModel[]>((observer) => {
+			observer.next(templatesCopy);
+			observer.complete();
+		});
+	}
+
+	private _initializeTiers(tierlist: TierlistModel): TierlistModel {
+		// Copy the default tiers onto the user tiers, and init the tierlist items
 		const tierlistCopy = deepCopy(tierlist);
 		if (!tierlistCopy.defaultTiers) {
 			tierlistCopy.defaultTiers = this._defaultTiers;
@@ -36,18 +59,6 @@ export class TemplateService {
 			tier.items = [];
 		});
 
-		// Return the tierlist
-		return new Observable<TierlistModel>((observer) => {
-			observer.next(tierlistCopy);
-			observer.complete();
-		});
-	}
-
-	public getAll(): Observable<TierlistModel[]> {
-		const tierlistsCopy = deepCopy(this._templates);
-		return new Observable<TierlistModel[]>((observer) => {
-			observer.next(tierlistsCopy);
-			observer.complete();
-		});
+		return tierlistCopy;
 	}
 }
