@@ -267,14 +267,6 @@ const baTierList: TierlistModel = {
 			],
 		},
 		{
-			name: 'Hikari',
-			age: 15,
-			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/e/ee/Hikari.png/266px-Hikari.png',
-			variations: [
-				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/7/7b/Hikari_00.png', },
-			],
-		},
-		{
 			name: 'Himari',
 			age: 17,
 			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/5/5a/Himari.png/266px-Himari.png',
