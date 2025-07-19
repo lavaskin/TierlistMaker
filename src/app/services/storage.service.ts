@@ -39,6 +39,9 @@ export class StorageService {
 			}
 		}
 
+		// Reverse their order to show the most recent first
+		tierlists.reverse();
+
 		return new Observable<TierlistModel[]>((observer) => {
 			observer.next(tierlists);
 			observer.complete();
