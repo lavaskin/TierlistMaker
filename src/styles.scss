@@ -25,12 +25,9 @@ a {
 .italic { font-style: italic; }
 .no-wrap { white-space: nowrap; }
 
-.font-xs { font-size: $font-xs !important; }
-.font-s { font-size: $font-s !important; }
-.font-m { font-size: $font-m !important; }
-.font-l { font-size: $font-l !important; }
-.font-xl { font-size: $font-xl !important; }
-.font-xxl { font-size: $font-xxl !important; }
+//#region Clickable Styling
+.pointer { cursor: pointer; }
+//#endregion
 
 //#region Shorthand Styles
 .mb-auto { margin-bottom: auto; }
@@ -151,12 +148,12 @@ a {
 .italic { font-style: italic; }
 .no-wrap { white-space: nowrap; }
 
-.font-xs { font-size: var(--font-xs); }
-.font-s { font-size: var(--font-s) !important; }
-.font-m { font-size: var(--font-m); }
-.font-l { font-size: var(--font-l); }
-.font-xl { font-size: var(--font-xl); }
-.font-xxl { font-size: var(--font-xxl); }
+.font-xs { font-size: $font-xs !important; }
+.font-s { font-size: $font-s !important; }
+.font-m { font-size: $font-m !important; }
+.font-l { font-size: $font-l !important; }
+.font-xl { font-size: $font-xl !important; }
+.font-xxl { font-size: $font-xxl !important; }
 
 .only-mobile { display: none; }
 
