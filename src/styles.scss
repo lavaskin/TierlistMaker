@@ -21,9 +21,14 @@ a {
 	color: var(--text-light);
 }
 
+//#region Text Styles
 .bold { font-weight: bold; }
 .italic { font-style: italic; }
 .no-wrap { white-space: nowrap; }
+
+.text-light { color: $text-light; }
+.text-dark  { color: $text-dark;  }
+//#endregion
 
 //#region Clickable Styling
 .pointer { cursor: pointer; }
