@@ -83,6 +83,6 @@ export class TierlistPage {
 	}
 
 	public showItemVariations(item: TierlistItemModel): void {
-		console.log('Item Variations:', item);
+		// ...
 	}
 }

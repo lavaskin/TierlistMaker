@@ -10,11 +10,4 @@ import { TooltipModule } from 'primeng/tooltip';
 export class TileComponent {
 	@Input() public title?: string;
 	@Input() public image?: string;
-	@Input() public clickAction?: () => void;
-
-	public onClick() {
-		if (this.clickAction) {
-			this.clickAction();
-		}
-	}
 }
