@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 	providedIn: 'root'
 })
 export class StorageService {
-	private storageKeyPrefix = 'user-tierlist-';
+	private _storageKeyPrefix = 'user-tierlist-';
 
 	/**
 	 * Retrieves the tierlist for a specific user.
@@ -14,7 +14,7 @@ export class StorageService {
 	 * @returns An observable containing the tierlist or null if not found
 	 */
 	public get(userId: number): Observable<TierlistModel | null> {
-		const tierlist = this.getFromLocalStorage(userId);
+		const tierlist = this._getFromLocalStorage(userId);
 
 		return new Observable<TierlistModel | null>((observer) => {
 			observer.next(tierlist);
@@ -30,7 +30,7 @@ export class StorageService {
 		const tierlists: TierlistModel[] = [];
 		for (let i = 0; i < localStorage.length; i++) {
 			const key = localStorage.key(i);
-			if (key && key.startsWith(this.storageKeyPrefix)) {
+			if (key && key.startsWith(this._storageKeyPrefix)) {
 				const tierlistJson = localStorage.getItem(key);
 				if (tierlistJson) {
 					const tierlist = JSON.parse(tierlistJson) as TierlistModel;
@@ -58,7 +58,7 @@ export class StorageService {
 		}
 
 		// Save the item to local storage under the user created id
-		this.saveToLocalStorage(tierlist);
+		this._saveToLocalStorage(tierlist);
 
 		// Return the saved tierlist
 		return new Observable<TierlistModel>((observer) => {
@@ -74,7 +74,7 @@ export class StorageService {
 	 * @returns An observable indicating the completion of the deletion
 	 */
 	public delete(userId: number): Observable<void> {
-		localStorage.removeItem(`${this.storageKeyPrefix}${userId}`);
+		localStorage.removeItem(`${this._storageKeyPrefix}${userId}`);
 
 		return new Observable<void>((observer) => {
 			observer.next();
@@ -82,13 +82,13 @@ export class StorageService {
 		});
 	}
 
-	private saveToLocalStorage(tierlist: TierlistModel): void {
+	private _saveToLocalStorage(tierlist: TierlistModel): void {
 		const tierlistJson = JSON.stringify(tierlist);
-		localStorage.setItem(`${this.storageKeyPrefix}${tierlist.userId}`, tierlistJson);
+		localStorage.setItem(`${this._storageKeyPrefix}${tierlist.userId}`, tierlistJson);
 	}
 
-	private getFromLocalStorage(userId: number): TierlistModel | null {
-		const tierlistJson = localStorage.getItem(`${this.storageKeyPrefix}${userId}`);
+	private _getFromLocalStorage(userId: number): TierlistModel | null {
+		const tierlistJson = localStorage.getItem(`${this._storageKeyPrefix}${userId}`);
 		if (!tierlistJson) {
 			return null;
 		}

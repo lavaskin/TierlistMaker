@@ -9,10 +9,10 @@ import { deepCopy } from "@app/utils";
 })
 export class TemplateService {
 	// Deep copy the tierlists data to avoid mutation
-	private templates: TierlistModel[] = deepCopy(TierlistsData);
+	private _templates: TierlistModel[] = deepCopy(TierlistsData);
 
 	public get(templateId: number): Observable<TierlistModel> {
-		const tierlist = this.templates.find(t => t.templateId == templateId);
+		const tierlist = this._templates.find(t => t.templateId == templateId);
 		if (!tierlist) {
 			throw new Error(`Template with id ${templateId} not found`);
 		}
@@ -36,7 +36,7 @@ export class TemplateService {
 	}
 
 	public getAll(): Observable<TierlistModel[]> {
-		const tierlistsCopy = deepCopy(this.templates);
+		const tierlistsCopy = deepCopy(this._templates);
 		return new Observable<TierlistModel[]>((observer) => {
 			observer.next(tierlistsCopy);
 			observer.complete();
