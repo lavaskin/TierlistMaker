@@ -12,7 +12,7 @@
 			icon="pi pi-save" />
 		<p-button
 			label="Delete"
-			(click)="delete()"
+			(click)="showDeleteDialog = true"
 			[loading]="isLoadingDelete"
 			severity="danger"
 			icon="pi pi-trash" />
@@ -58,6 +58,16 @@
 } @else {
 	<app-spinner></app-spinner>
 }
+
+<p-dialog [(visible)]="showDeleteDialog" [header]="'Confirm Delete'" [modal]="true" [closable]="true" [resizable]="false">
+	<p class="mb-4">Are you sure you want to delete this tierlist?</p>
+	<div class="flex row justify-end gap-1">
+		<p-button label="Cancel"
+			variant="text"
+			(click)="showDeleteDialog = false"></p-button>
+		<p-button label="Delete" (click)="delete()" severity="danger"></p-button>
+	</div>
+</p-dialog>
 
 <p-dialog
 	[(visible)]="showVariations"

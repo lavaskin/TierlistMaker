@@ -30,6 +30,8 @@ export class TierlistPage {
 	public tierlist?: TierlistModel;
 	public selectedItem?: TierlistItemModel;
 	public selectedItemVariations = model<TierlistItemVariation[]>([]);
+
+	public showDeleteDialog: boolean = false;
 	public showVariations: boolean = false;
 
 	private _route = inject(ActivatedRoute);
