@@ -8,9 +8,7 @@ import { deepCopy } from "@app/utils";
 	providedIn: 'root'
 })
 export class TemplateService {
-	// Deep copy the tierlists data to avoid mutation
 	private _templates: TierlistModel[] = deepCopy(TierlistsData);
-
 	private _defaultTiers = [
 		{ label: 'S', color: '#ff0000' },
 		{ label: 'A', color: '#f15b4c' },
