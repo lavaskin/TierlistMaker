@@ -41,7 +41,7 @@
 
 				<!-- Tier Items Slot -->
 				<div class="item-container flex row gap-1 pa-1 flex-wrap align-center justify-start w-100"
-					cdkDropList [cdkDropListData]="tier.items!" (cdkDropListDropped)="drop($event)">
+					cdkDropList [cdkDropListData]="tier.items!" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
 
 					@for (item of tier.items; track item.id) {
 						<app-tile cdkDrag cdkDragBoundary=".drag-boundary"
@@ -58,7 +58,7 @@
 	<!-- Tierlist Items -->
 	<!-- ... -->
 	<div class="item-container flex row gap-1 flex-wrap w-100 pa-1"
-		cdkDropList [cdkDropListData]="tierlist?.items!" (cdkDropListDropped)="drop($event)">
+		cdkDropList [cdkDropListData]="tierlist?.items!" cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
 
 		@for (item of tierlist?.items; track $index) {
 			<app-tile cdkDrag cdkDragBoundary=".drag-boundary"
