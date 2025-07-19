@@ -16,6 +16,11 @@
 			[loading]="isLoadingDelete"
 			severity="danger"
 			icon="pi pi-trash" />
+		<p-button
+			icon="pi pi-undo"
+			(click)="reset()"
+			severity="warn"
+			[disabled]="!canReset"></p-button>
 	</div>
 </div>
 

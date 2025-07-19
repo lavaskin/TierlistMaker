@@ -12,6 +12,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { GalleriaModule } from 'primeng/galleria';
 import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { TemplateService } from '@app/services/template.service';
 
 @Component({
 	selector: 'page-tierlist',
@@ -40,6 +41,7 @@ export class TierlistPage {
 	private _route = inject(ActivatedRoute);
 	private _router = inject(Router);
 	private _storage = inject(StorageService);
+	private _templates = inject(TemplateService);
 	private _alerts = inject(AlertService);
 
 	ngOnInit() {
@@ -55,6 +57,7 @@ export class TierlistPage {
 					}
 					
 					this.tierlist = tierlist as TierlistModel;
+					this._checkCanReset();
 				},
 				error: () => {
 					this._alerts.showError('Failed to load tierlist.');
@@ -90,6 +93,22 @@ export class TierlistPage {
 				this._alerts.showError('Failed to delete tierlist.');
 			}
 		}).add(() => this.isLoadingDelete = false);
+	}
+
+	public reset(): void {
+		// Fetch the template the tierlist is based on and set its tiers back to the default
+		this.isLoading = true;
+		this._templates.get(this.tierlist!.templateId).subscribe({
+			next: (template: TierlistModel) => {
+				this.tierlist!.tiers = template.tiers;
+				this.tierlist!.items = template.items;
+				
+				this.canReset = false;
+			},
+			error: () => {
+				this._alerts.showError('Failed to reset tierlist.');
+			}
+		}).add(() => this.isLoading = false);
 	}
 
 	public drop(event: CdkDragDrop<TierlistItemModel[]>): void {
