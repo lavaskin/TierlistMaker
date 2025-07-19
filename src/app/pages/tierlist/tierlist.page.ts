@@ -139,6 +139,24 @@ export class TierlistPage {
 		// this.showVariations = true;
 	}
 
+	public clickedTier(tier: TierlistTier): void {
+		this.selectedTier = tier;
+		this.showTierInfoDialog = true;
+	}
+
+	public deleteTier(tier: TierlistTier): void {
+		const index = this.tierlist?.tiers?.indexOf(tier);
+		if (index !== undefined && index >= 0) {
+			// Add the tiers items into the main list
+			const tierItems = this.tierlist!.tiers![index].items || [];
+			this.tierlist!.items.push(...tierItems);
+
+			// Delete the tier
+			this.tierlist!.tiers!.splice(index, 1);
+			this._checkCanReset();
+		}
+	}
+
 	private _checkCanReset(): void {
 		// Check if any of the tiers have items inside them
 		this.canReset = this.tierlist?.tiers?.some(tier => tier.items && tier.items.length > 0) || false;
