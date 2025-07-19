@@ -20,14 +20,13 @@ export class TemplateService {
 
 	public get(templateId: number): Observable<TierlistModel> {
 		const foundTemplate = this._templates.find(t => t.templateId == templateId);
-		if (!foundTemplate) {
-			throw new Error(`Template with id ${templateId} not found`);
-		}
 
-		// Return the tierlist after initializing its tiers
-		const template = this._initializeTiers(foundTemplate);
 		return new Observable<TierlistModel>((observer) => {
-			observer.next(template);
+			if (!foundTemplate) {
+				observer.error(new Error(`Template with ID ${templateId} not found`));
+			} else {
+				observer.next(this._initializeTiers(foundTemplate));
+			}
 			observer.complete();
 		});
 	}

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TileComponent } from '@app/components/tile/tile.component';
 import { TierlistModel } from '@app/models/tierlist.model';
 import { AlertService } from '@app/services/alert.service';
@@ -19,6 +19,7 @@ export class ViewerPage {
 	public tierlist?: TierlistModel;
 
 	private _route = inject(ActivatedRoute);
+	private _router = inject(Router);
 	private _templates = inject(TemplateService);
 	private _alerts = inject(AlertService);
 
@@ -31,8 +32,9 @@ export class ViewerPage {
 				next: (tierlist: TierlistModel) => {
 					this.tierlist = tierlist;
 				},
-				error: (err) => {
+				error: () => {
 					this._alerts.showError('Failed to load template.');
+					this._router.navigate(['/']);
 				}
 			});
 		});
