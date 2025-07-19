@@ -1,4 +1,4 @@
-$min-tier-height: 7.25rem;
+$min-tier-height: 6.5rem;
 $border-radius: 0.5rem;
 
 .tierlist {
@@ -6,13 +6,13 @@ $border-radius: 0.5rem;
 }
 
 .tier-label {
-	position: relative;
-	min-width: 6.5rem;
+	min-width: $min-tier-height;
 	min-height: $min-tier-height;	
 	border-radius: $border-radius;
-	height: 100% !important;
 	font-weight: bold;
 	text-transform: uppercase;
+	// !IMPORTANT: This is what makes the tier label grow to the full height of the tier row
+	justify-content: center;
 }
 
 .tier-slot {
