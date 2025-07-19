@@ -1,21 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, model } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SpinnerComponent } from '@app/components/spinner/spinner.component';
 import { TileComponent } from '@app/components/tile/tile.component';
-import { TierlistItemModel } from '@app/models/tierlist-item.model';
+import { TierlistItemModel, TierlistItemVariation } from '@app/models/tierlist-item.model';
 import { TierlistModel } from '@app/models/tierlist.model';
 import { AlertService } from '@app/services/alert.service';
 import { StorageService } from '@app/services/storage.service';
-import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { GalleriaModule } from 'primeng/galleria';
 
 @Component({
 	selector: 'page-tierlist',
 	imports: [
-		CommonModule,
+		CommonModule, FormsModule,
 		TileComponent, SpinnerComponent,
-		ButtonModule,
+		ButtonModule, DialogModule, GalleriaModule,
 	],
 	templateUrl: './tierlist.page.html',
 	styleUrl: './tierlist.page.scss',
@@ -26,6 +28,9 @@ export class TierlistPage {
 	public isLoadingDelete: boolean = false;
 
 	public tierlist?: TierlistModel;
+	public selectedItem?: TierlistItemModel;
+	public selectedItemVariations = model<TierlistItemVariation[]>([]);
+	public showVariations: boolean = false;
 
 	private _route = inject(ActivatedRoute);
 	private _router = inject(Router);
@@ -83,6 +88,8 @@ export class TierlistPage {
 	}
 
 	public showItemVariations(item: TierlistItemModel): void {
-		// ...
+		this.selectedItem = item;
+		this.selectedItemVariations.set(item.variations);
+		this.showVariations = true;
 	}
 }

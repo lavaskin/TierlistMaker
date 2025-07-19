@@ -1,4 +1,5 @@
 @if (!isLoading) {
+<!-- Tierlist Header -->
 <div class="flex row justify-between mb-3">
 	<p class="font-xl">{{ tierlist?.name }}</p>
 
@@ -19,7 +20,29 @@
 </div>
 
 <!-- Tierlist Itself -->
-<!-- ... -->
+<div class="tierlist flex col gap-1 mb-2 w-100">
+	@for (tier of tierlist?.tiers; track $index) {
+		<div class="flex row gap-1 align-center">
+			<!-- Tier Name -->
+			 <div class="tier-label font-xl flex align-center justify-center"
+			 	[ngStyle]="{ 'backgroundColor': tier.color }">
+				{{ tier.label }}
+			</div>
+
+			<!-- Tier Items Slot -->
+			<div class="tier-slot flex-row gap-1 flex-wrap align-center justify-start w-100">
+				@for (item of tier.items; track item.id) {
+					<app-tile
+						[image]="item.thumbnail"
+						[title]="item.name"
+						class="cursor-pointer"
+						(click)="showItemVariations(item)" />
+				}
+
+			</div>
+		</div>
+	}
+</div>
 
 <!-- Tierlist Items -->
 <!-- ... -->
@@ -35,3 +58,24 @@
 } @else {
 	<app-spinner></app-spinner>
 }
+
+<p-dialog
+	[(visible)]="showVariations"
+	[header]="selectedItem?.name + ' Variations'"
+	[style]="{ width: '50vw' }"
+	[modal]="true"
+	[closable]="true"
+	[resizable]="false">
+	
+	<!-- <p-galleria [(value)]="selectedItemVariations" [numVisible]="5">
+		<ng-template #item let-item>
+			<img [src]="item.image" [alt]="item.name" style="width: 100%; display: block;" />
+		</ng-template>
+		<ng-template #thumbnail let-item>
+			<img [src]="item.image" style="display: block;" />
+		</ng-template>
+		<ng-template #caption let-item>
+			<div class="font-xl mb-2 font-bold">{{ item.name }}</div>
+		</ng-template>
+	</p-galleria> -->
+</p-dialog>
