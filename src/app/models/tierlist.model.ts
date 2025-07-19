@@ -4,6 +4,7 @@ export interface TierlistModel {
 	templateId: number,
 	name: string,
 	items: TierlistItemModel[],
+	// This shouldn't be modified by the user.
 	defaultTiers?: TierlistTier[],
 
 	// NotMapped
