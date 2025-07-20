@@ -170,6 +170,8 @@ export class TierlistPage {
 	}
 
 	public clickedTier(tier: TierlistTier): void {
+		if (!this.isEditing) return;
+
 		this.selectedTier = tier;
 		this.showTierInfoDialog = true;
 	}
