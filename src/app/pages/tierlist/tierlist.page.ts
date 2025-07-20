@@ -40,6 +40,13 @@ export class TierlistPage {
 
 	public showDeleteDialog: boolean = false;
 
+	public isAddingNewItem: boolean = false;
+	public showEditItemDialog: boolean = false;
+	public newVariation: TierlistItemVariation = {
+		name: '',
+		image: '',
+	};
+
 	public showVariationsDialog: boolean = false;
 	public selectedItem?: TierlistItemModel;
 	public galleryIndex: number = 0;
@@ -121,20 +128,6 @@ export class TierlistPage {
 		}).add(() => this.isLoading = false);
 	}
 
-	public addTier(): void {
-		if (!this.tierlist) return;
-
-		const newTier: TierlistTier = {
-			label: 'New Tier',
-			color: '#A1A1A1',
-			items: [],
-		};
-
-		this.tierlist.tiers?.push(newTier);
-		this.clickedTier(newTier);
-		this._checkCanReset();
-	}
-
 	public drop(event: CdkDragDrop<TierlistItemModel[]>): void {
 		// Moving an item around within the tier
 		if (event.previousContainer == event.container) {
@@ -155,18 +148,70 @@ export class TierlistPage {
 		}
 	}
 
+	public createNewItem(): void {
+		this.isAddingNewItem = true;
+		this.selectedItem = {
+			name: 'New Item',
+			thumbnail: '',
+			variations: [
+				{ name: 'Default', image: '' },
+			],
+		};
+
+		this.showEditItemDialog = true;
+	}
+
+	public addNewItem(): void {
+		this.tierlist!.items.push(this.selectedItem!);
+		this.selectedItem = undefined;
+		this.isAddingNewItem = false;
+		this.showEditItemDialog = false;
+	}
+
+	public addNewVariation(): void {
+		this.selectedItem!.variations.push(this.newVariation!);
+		this.newVariation = {
+			name: '',
+			image: '',
+		};
+	}
+
 	public clickedTile(item: TierlistItemModel): void {
+		this.isAddingNewItem = false;
 		this.galleryIndex = 0;
 		this.selectedItem = item;
-		this.selectedItemVariations = [];		
-		this.showVariationsDialog = true;
 
-		// This is needed as a hack to ensure that the correct amount of variations are shown
-		// in the thumbnails of the galleria. For example, if you clicked a 2 variation item and then a 3, the
-		// third variation wouldn't appear as a thumbnail otherwise
-		setTimeout(() => {
-			this.selectedItemVariations = deepCopy(item.variations);
-		});
+		// When editing, show the edit item dialog
+		if (this.isEditing) {
+			this.showEditItemDialog = true;
+		}
+		
+		// When not editing, show the variations dialog
+		else {
+			this.selectedItemVariations = [];
+			this.showVariationsDialog = true;
+
+			// This is needed as a hack to ensure that the correct amount of variations are shown
+			// in the thumbnails of the galleria. For example, if you clicked a 2 variation item and then a 3, the
+			// third variation wouldn't appear as a thumbnail otherwise
+			setTimeout(() => {
+				this.selectedItemVariations = deepCopy(item.variations);
+			});
+		}
+	}
+
+	public addTier(): void {
+		if (!this.tierlist) return;
+
+		const newTier: TierlistTier = {
+			label: 'New Tier',
+			color: '#A1A1A1',
+			items: [],
+		};
+
+		this.tierlist.tiers?.push(newTier);
+		this.clickedTier(newTier);
+		this._checkCanReset();
 	}
 
 	public clickedTier(tier: TierlistTier): void {

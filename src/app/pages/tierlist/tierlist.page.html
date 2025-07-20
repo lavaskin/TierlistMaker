@@ -6,7 +6,7 @@
 	<div class="flex row gap-1">
 		<p-button
 			(click)="isEditing = !isEditing"
-			[pTooltip]="isEditing ? 'Save Tiers' : 'Edit Tiers'"
+			[pTooltip]="isEditing ? 'Save Tierlist' : 'Edit Tierlist'"
 			tooltipPosition="left"
 			[icon]="isEditing ? 'pi pi-check' : 'pi pi-pencil'" />
 
@@ -94,6 +94,14 @@
 				(click)="clickedTile(item)"
 				class="cursor-pointer" />
 		}
+		@if (isEditing) {
+			<p class="tile-add text-dark font-xxl flex align-center justify-center pointer mb-2"
+				[ngStyle]="{ 'backgroundColor': '#d3d3d3' }"
+				(click)="createNewItem()">
+
+				<span class="unselectable">+</span>
+			</p>
+		}
 	</div>
 </div>
 
@@ -115,6 +123,86 @@
 			variant="text"
 			(click)="showDeleteDialog = false"></p-button>
 		<p-button label="Delete" (click)="delete()" severity="danger"></p-button>
+	</div>
+</p-dialog>
+
+<!-- Edit Item Dialog -->
+ <p-dialog
+	[(visible)]="showEditItemDialog"
+	[header]="'Editing ' + selectedItem?.name"
+	[modal]="true"
+	[resizable]="false"
+	[dismissableMask]="true">
+
+	<div class="flex col gap-2" *ngIf="selectedItem">
+		<div class="flex row gap-1">
+			<p-floatlabel variant="in">
+				<input pInputText
+					type="text"
+					[(ngModel)]="selectedItem.name">
+				<label>Name</label>
+			</p-floatlabel>
+			<p-floatlabel variant="in">
+				<input pInputText
+					type="text"
+					[(ngModel)]="selectedItem.thumbnail">
+				<label>Thumbnail URL</label>
+			</p-floatlabel>
+		</div>
+
+		<p class="mt-1 mb-2">Variations:</p>
+		@for (v of selectedItem.variations; track $index) {
+			<div class="flex row gap-1 align-center">
+				<p-floatlabel variant="in">
+					<input pInputText
+						type="text"
+						[(ngModel)]="v.name">
+					<label>Variation Name</label>
+				</p-floatlabel>
+				<p-floatlabel variant="in">
+					<input pInputText
+						type="text"
+						[(ngModel)]="v.image">
+					<label>Image URL</label>
+				</p-floatlabel>
+				<p-button icon="pi pi-trash"
+					severity="danger"
+					size="large"
+					(click)="selectedItem.variations.splice($index, 1)"
+					pTooltip="Delete Variation"
+					tooltipPosition="top"></p-button>
+			</div>
+		}
+		<!-- New Variation -->
+		<div class="flex row gap-1 align-center" *ngIf="newVariation">
+			<p-floatlabel variant="in">
+				<input pInputText
+					type="text"
+					[(ngModel)]="newVariation!.name">
+				<label>New Variation Name</label>
+			</p-floatlabel>
+			<p-floatlabel variant="in">
+				<input pInputText
+					type="text"
+					[(ngModel)]="newVariation!.image">
+				<label>Image URL</label>
+			</p-floatlabel>
+			<p-button icon="pi pi-plus"
+				severity="success"
+				size="large"
+				(click)="addNewVariation()"
+				[disabled]="!newVariation.name || !newVariation.image"
+				pTooltip="Add Variation"
+				tooltipPosition="top"></p-button>
+		</div>
+
+		<p-button label="Create New Item"
+			*ngIf="isAddingNewItem"
+			icon="pi pi-plus"
+			class="ml-auto"
+			(click)="addNewItem()"
+			[disabled]="!selectedItem.name || !selectedItem.thumbnail"
+			severity="success" />
 	</div>
 </p-dialog>
 
@@ -167,7 +255,6 @@
 	<div class="flex col align-center gap-2">
 		<p-floatlabel variant="in">
 			<input pInputText
-				id="tierlist-name"
 				type="text"
 				[(ngModel)]="selectedTier.label">
 			<label>Tier Label</label>

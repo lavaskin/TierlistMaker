@@ -2,17 +2,20 @@ $min-tier-height: 6.5rem;
 $border-radius: 0.5rem;
 $foreground-color: #212121;
 
+.tier-label,
+.tile-add {
+	font-weight: bold;
+	text-transform: uppercase;
+	overflow-wrap: break-word;
+	text-align: center;
+	border-radius: $border-radius;
+}
+
 .tier-label {
 	position: relative;
 	width: 100%;
 	max-width: $min-tier-height;
 	min-height: $min-tier-height;	
-	border-radius: $border-radius;
-	font-weight: bold;
-	text-transform: uppercase;
-	overflow-wrap: break-word;
-	text-align: center;
-
 	// !IMPORTANT: This is what makes the tier label grow to the full height of the tier row
 	justify-content: center;
 }
@@ -27,6 +30,11 @@ $foreground-color: #212121;
 	&.pi-angle-down {
 		bottom: 1rem;
 	}
+}
+
+.tile-add {
+	height: 6rem;
+	aspect-ratio: 1/1;
 }
 
 .item-container {
