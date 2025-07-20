@@ -5,6 +5,14 @@
 
 	<div class="flex row gap-1">
 		<p-button
+			(click)="isEditing = !isEditing"
+			[pTooltip]="isEditing ? 'Save Tiers' : 'Edit Tiers'"
+			tooltipPosition="left"
+			[icon]="isEditing ? 'pi pi-check' : 'pi pi-pencil'" />
+
+		<div class="vertical-bar"></div>
+		
+		<p-button
 			label="Save"
 			(click)="save()"
 			[loading]="isLoadingSave"
@@ -56,8 +64,17 @@
 		}
 	</div>
 
+	<!-- Add Tier Button -->
+	@if (isEditing) {
+		<p class="tier-label text-dark font-xxl flex align-center justify-center pointer mb-2"
+			[ngStyle]="{ 'backgroundColor': '#d3d3d3' }"
+			(click)="addTier()">
+
+			<span class="unselectable">+</span>
+		</p>
+	}
+	
 	<!-- Tierlist Items -->
-	<!-- ... -->
 	<div class="item-container flex row gap-1 flex-wrap w-100 pa-1"
 		cdkDropList [cdkDropListData]="tierlist?.items!" cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event)">
 
@@ -151,11 +168,11 @@
 			[(ngModel)]="selectedTier.color"
 			[inline]=true />
 
-		<div class="flex row justify-end gap-1 w-100">
+		<div class="flex row justify-between w-100">
 			<p-button label="Close"
 				variant="text"
 				(click)="showTierInfoDialog = false"></p-button>
-			<p-button label="Delete"
+			<p-button icon="pi pi-trash"
 				(click)="deleteTier(selectedTier)"
 				severity="danger"></p-button>
 		</div>

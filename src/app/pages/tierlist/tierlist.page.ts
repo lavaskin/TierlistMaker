@@ -36,6 +36,8 @@ export class TierlistPage {
 
 	public tierlist?: TierlistModel;
 
+	public isEditing: boolean = false;
+
 	public showDeleteDialog: boolean = false;
 
 	public showVariationsDialog: boolean = false;
@@ -111,11 +113,26 @@ export class TierlistPage {
 				this.tierlist!.items = template.items;
 				
 				this.canReset = false;
+				this.isEditing = false;
 			},
 			error: () => {
 				this._alerts.showError('Failed to reset tierlist.');
 			}
 		}).add(() => this.isLoading = false);
+	}
+
+	public addTier(): void {
+		if (!this.tierlist) return;
+
+		const newTier: TierlistTier = {
+			label: 'New Tier',
+			color: '#A1A1A1',
+			items: [],
+		};
+
+		this.tierlist.tiers?.push(newTier);
+		this.clickedTier(newTier);
+		this._checkCanReset();
 	}
 
 	public drop(event: CdkDragDrop<TierlistItemModel[]>): void {

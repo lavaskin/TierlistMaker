@@ -21,6 +21,13 @@ a {
 	color: var(--text-light);
 }
 
+.vertical-bar {
+	width: 2px;
+	height: 100%;
+	background-color: variables.$text-light;
+	filter: opacity(0.5);
+}
+
 //#region Text Styles
 .bold { font-weight: bold; }
 .italic { font-style: italic; }
