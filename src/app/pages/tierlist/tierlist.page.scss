@@ -2,11 +2,8 @@ $min-tier-height: 6.5rem;
 $border-radius: 0.5rem;
 $foreground-color: #212121;
 
-.tierlist {
-	// ...
-}
-
 .tier-label {
+	position: relative;
 	width: 100%;
 	max-width: $min-tier-height;
 	min-height: $min-tier-height;	
@@ -18,6 +15,18 @@ $foreground-color: #212121;
 
 	// !IMPORTANT: This is what makes the tier label grow to the full height of the tier row
 	justify-content: center;
+}
+
+.tier-label-arrow {
+	position: absolute;
+	transform: translateX(-200%);
+
+	&.pi-angle-up {
+		top: 1rem;
+	}
+	&.pi-angle-down {
+		bottom: 1rem;
+	}
 }
 
 .item-container {

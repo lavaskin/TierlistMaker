@@ -190,6 +190,14 @@ export class TierlistPage {
 		this._checkCanReset();
 	}
 
+	public moveTierUp(index: number): void {
+		// ...
+	}
+
+	public moveTierDown(index: number): void {
+		// ...
+	}
+
 	private _checkCanReset(): void {
 		// Check if any of the tiers have items inside them
 		const tiersHaveItems = this.tierlist?.tiers?.some(tier => tier.items && tier.items.length > 0) || false;

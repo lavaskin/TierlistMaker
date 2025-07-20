@@ -39,7 +39,7 @@
 	<div class="tierlist flex col gap-1 mb-2 w-100">
 		@for (tier of tierlist?.tiers; track $index) {
 			<!-- Individual Tier Row -->
-			<div class="flex row gap-1">
+			<div class="flex row gap-1 relative">
 				<!-- Tier Name -->
 				<p class="tier-label text-dark font-l flex align-center justify-center pointer text-wrap"
 					(click)="clickedTier(tier)"
@@ -47,6 +47,15 @@
 					
 					<span class="unselectable">{{ tier.label }}</span>
 				</p>
+
+				@if (isEditing) {
+					<i class="tier-label-arrow text-light pointer font-l pi pi-angle-up"
+						*ngIf="$index > 0"
+						(click)="moveTierUp($index)"></i>
+					<i class="tier-label-arrow text-light pointer font-l pi pi-angle-down"
+						*ngIf="$index < (tierlist?.tiers?.length || 0) - 1"
+						(click)="moveTierDown($index)"></i>
+				}
 
 				<!-- Tier Items Slot -->
 				<div class="item-container flex row gap-1 pa-1 flex-wrap align-center justify-start w-100"
