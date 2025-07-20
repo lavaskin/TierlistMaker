@@ -1,7 +1,17 @@
-@if (!isLoading) {
+@if (!isLoading && tierlist) {
 <!-- Tierlist Header -->
 <div class="flex row justify-between mb-3">
-	<p class="font-xl">{{ tierlist?.name }}</p>
+	<!-- Tierlist Name -->
+	@if (!isEditing) {
+		<p class="font-xl">{{ tierlist.name }}</p>
+	} @else {
+		<p-floatlabel variant="over">
+			<input pInputText
+				type="text"
+				[(ngModel)]="tierlist.name">
+			<label>Tierlist Name</label>
+		</p-floatlabel>
+	}
 
 	<div class="flex row gap-1">
 		<p-button
@@ -37,7 +47,7 @@
 <div class="drag-boundary" cdkDropListGroup>
 	<!-- Tierlist Itself -->
 	<div class="tierlist flex col gap-1 mb-2 w-100">
-		@for (tier of tierlist?.tiers; track $index) {
+		@for (tier of tierlist.tiers; track $index) {
 			<!-- Individual Tier Row -->
 			<div class="flex row gap-1 relative">
 				<!-- Tier Name -->
@@ -85,9 +95,9 @@
 	
 	<!-- Tierlist Items -->
 	<div class="item-container flex row gap-1 flex-wrap w-100 pa-1"
-		cdkDropList [cdkDropListData]="tierlist?.items!" cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event)">
+		cdkDropList [cdkDropListData]="tierlist.items!" cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event)">
 
-		@for (item of tierlist?.items; track $index) {
+		@for (item of tierlist.items; track $index) {
 			<app-tile cdkDrag cdkDragBoundary=".drag-boundary"
 				[image]="item.thumbnail"
 				[title]="item.name"
