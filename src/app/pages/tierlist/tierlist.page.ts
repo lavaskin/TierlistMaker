@@ -191,11 +191,17 @@ export class TierlistPage {
 	}
 
 	public moveTierUp(index: number): void {
-		// ...
+		// Swap the tier at index with the one above it
+		if (index <= 0 || !this.tierlist?.tiers) return;
+		const tiers = this.tierlist.tiers;
+		[tiers[index - 1], tiers[index]] = [tiers[index], tiers[index - 1]];
 	}
 
 	public moveTierDown(index: number): void {
-		// ...
+		// Swap the tier at index with the one below it
+		if (index >= (this.tierlist?.tiers?.length || 0) - 1 || !this.tierlist?.tiers) return;
+		const tiers = this.tierlist.tiers;
+		[tiers[index + 1], tiers[index]] = [tiers[index], tiers[index + 1]];
 	}
 
 	private _checkCanReset(): void {
