@@ -19,15 +19,13 @@
 			[pTooltip]="isEditing ? 'Save Tierlist' : 'Edit Tierlist'"
 			tooltipPosition="left"
 			[icon]="isEditing ? 'pi pi-check' : 'pi pi-pencil'" />
-
-		<div class="vertical-bar"></div>
-		
 		<p-button
 			label="Save"
 			(click)="save()"
 			[loading]="isLoadingSave"
 			severity="info"
 			icon="pi pi-save" />
+		<div class="vertical-bar"></div>
 		<p-button
 			label="Delete"
 			(click)="showDeleteDialog = true"
