@@ -230,6 +230,7 @@ const baTierListData: TierlistModel = {
 			variations: [
 				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/9/9b/Hasumi_00.png', },
 				{ name: 'Sportswear', image: 'https://static.wikitide.net/bluearchivewiki/9/91/Hasumi_%28Sportswear%29_00.png', },
+				{ name: 'Swimsuit', image: '/tierlists/ba/hasumi.jpg', },
 			],
 		},
 		{
@@ -326,6 +327,7 @@ const baTierListData: TierlistModel = {
 			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/b/b3/Ichika.png/266px-Ichika.png',
 			variations: [
 				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/e/e1/Ichika_00.png', },
+				{ name: 'Swimsuit', image: '/tierlists/ba/ichika.jpg', },
 			],
 		},
 		{
@@ -606,6 +608,7 @@ const baTierListData: TierlistModel = {
 			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/c/c8/Mika.png/266px-Mika.png',
 			variations: [
 				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/3/3b/Mika_00.png', },
+				{ name: 'Swimsuit', image: '/tierlists/ba/mika.jpg', },
 			],
 		},
 		{
@@ -717,6 +720,7 @@ const baTierListData: TierlistModel = {
 			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/6/6a/Nagisa.png/266px-Nagisa.png',
 			variations: [
 				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/6/63/Nagisa_00.png', },
+				{ name: 'Swimsuit', image: '/tierlists/ba/nagisa.jpg', },
 			],
 		},
 		{
@@ -906,6 +910,7 @@ const baTierListData: TierlistModel = {
 			thumbnail: 'https://static.wikitide.net/bluearchivewiki/thumb/4/46/Seia.png/266px-Seia.png',
 			variations: [
 				{ name: 'Default', image: 'https://static.wikitide.net/bluearchivewiki/7/74/Seia_00.png', },
+				{ name: 'Swimsuit', image: '/tierlists/ba/seia.jpg', },
 				{ name: 'Box', image: 'https://static.wikitide.net/bluearchivewiki/9/95/Seia_%28Box%29_00.png', },
 			],
 		},
