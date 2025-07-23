@@ -1,7 +1,8 @@
+import { TemplateIdEnum } from "./enums/template-ids.enum";
 import { TierlistItemModel } from "./tierlist-item.model";
 
 export interface TierlistModel {
-	templateId: number,
+	templateId: TemplateIdEnum,
 	name: string,
 	items: TierlistItemModel[],
 	// This shouldn't be modified by the user.

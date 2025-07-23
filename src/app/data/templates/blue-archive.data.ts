@@ -1,11 +1,11 @@
 import { BlueArchiveCharacterModel } from "@app/models/ba-character.model";
-import { TemplateIds } from "@app/models/enums/tierlist-ids.enum";
+import { TemplateIdEnum } from "@app/models/enums/template-ids.enum";
 import { TierlistModel } from "@app/models/tierlist.model";
 
 // Info from: https://bluearchive.wiki/wiki/Characters
 
 const baTemplateData: TierlistModel = {
-	templateId: TemplateIds.BlueArchive,
+	templateId: TemplateIdEnum.BlueArchive,
 	name: "Blue Archive",
 	defaultTiers: [
 		{ label: '😭', color: '#ff0000' },

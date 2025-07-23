@@ -1,10 +1,10 @@
-import { TemplateIds } from "@app/models/enums/tierlist-ids.enum";
+import { TemplateIdEnum } from "@app/models/enums/template-ids.enum";
 import { TierlistModel } from "@app/models/tierlist.model";
 
 // Info from: https://zenless-zone-zero.fandom.com/wiki/Agent#Playable_Agents
 
 const zzzTemplateData: TierlistModel = {
-	templateId: TemplateIds.ZenlessZoneZero,
+	templateId: TemplateIdEnum.ZenlessZoneZero,
 	name: "Zenless Zone Zero",
 	items: [
 		{

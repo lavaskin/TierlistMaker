@@ -7,7 +7,7 @@
 		<h2>{{ item.name }}</h2>
 	</div>
 	
-	<div class="flex row gap-2 mb-4">
+	<div class="flex row gap-2 mb-4" *ngIf="item.variations && item.variations.length > 0">
 		@for (v of item.variations; track $index) {
 			<div class="flex col align-center">
 				<img class="skin" [src]="v.image" [alt]="v.name" />
