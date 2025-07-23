@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SpinnerComponent } from '@app/components/spinner/spinner.component';
-import { TierlistIds } from '@app/models/enums/tierlist-ids.enum';
+import { TemplateIds } from '@app/models/enums/tierlist-ids.enum';
 import { TierlistModel } from '@app/models/tierlist.model';
 import { StorageService } from '@app/services/storage.service';
 import { TemplateService } from '@app/services/template.service';
@@ -45,7 +45,7 @@ export class HomePage {
 		}).add(() => this.isLoading = false);
 	}
 
-	public navigateToTierlist(tierlistId: TierlistIds) {
+	public navigateToTierlist(tierlistId: TemplateIds) {
 		this._router.navigate(['/tierlist', tierlistId]);
 	}
 }

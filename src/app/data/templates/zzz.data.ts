@@ -1,10 +1,10 @@
-import { TierlistIds } from "@app/models/enums/tierlist-ids.enum";
+import { TemplateIds } from "@app/models/enums/tierlist-ids.enum";
 import { TierlistModel } from "@app/models/tierlist.model";
 
 // Info from: https://zenless-zone-zero.fandom.com/wiki/Agent#Playable_Agents
 
-const zzzTierlistData: TierlistModel = {
-	templateId: TierlistIds.ZenlessZoneZero,
+const zzzTemplateData: TierlistModel = {
+	templateId: TemplateIds.ZenlessZoneZero,
 	name: "Zenless Zone Zero",
 	items: [
 		{
@@ -136,11 +136,11 @@ const zzzTierlistData: TierlistModel = {
 }
 
 // Add an id to all characters
-zzzTierlistData.items.forEach((item, index) => {
+zzzTemplateData.items.forEach((item, index) => {
 	item.id = index + 1; // Assigning a unique id starting from 1
 });	
 
 // Sort the characters by name
-zzzTierlistData.items.sort((a, b) => a.name.localeCompare(b.name));
+zzzTemplateData.items.sort((a, b) => a.name.localeCompare(b.name));
 
-export default zzzTierlistData;
+export default zzzTemplateData;

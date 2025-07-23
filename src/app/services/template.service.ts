@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import { TierlistsData } from "@app/data/tierlists.data";
+import { TemplatesData } from "@app/data/templates.data";
 import { TierlistModel } from "@app/models/tierlist.model";
 import { deepCopy } from "@app/utils";
 
@@ -8,7 +8,7 @@ import { deepCopy } from "@app/utils";
 	providedIn: 'root'
 })
 export class TemplateService {
-	private _templates: TierlistModel[] = deepCopy(TierlistsData);
+	private _templates: TierlistModel[] = deepCopy(TemplatesData);
 	private _defaultTiers = [
 		{ label: 'S', color: '#ff0000' },
 		{ label: 'A', color: '#f15b4c' },

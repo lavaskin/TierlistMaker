@@ -1,11 +1,11 @@
 import { BlueArchiveCharacterModel } from "@app/models/ba-character.model";
-import { TierlistIds } from "@app/models/enums/tierlist-ids.enum";
+import { TemplateIds } from "@app/models/enums/tierlist-ids.enum";
 import { TierlistModel } from "@app/models/tierlist.model";
 
 // Info from: https://bluearchive.wiki/wiki/Characters
 
-const baTierListData: TierlistModel = {
-	templateId: TierlistIds.BlueArchive,
+const baTemplateData: TierlistModel = {
+	templateId: TemplateIds.BlueArchive,
 	name: "Blue Archive",
 	defaultTiers: [
 		{ label: '😭', color: '#ff0000' },
@@ -1147,11 +1147,11 @@ const baTierListData: TierlistModel = {
 }
 
 // Add an id to all characters
-baTierListData.items.forEach((item, index) => {
+baTemplateData.items.forEach((item, index) => {
 	item.id = index + 1; // Assigning a unique id starting from 1
 });	
 
 // Sort the characters by name
-baTierListData.items.sort((a, b) => a.name.localeCompare(b.name));
+baTemplateData.items.sort((a, b) => a.name.localeCompare(b.name));
 
-export default baTierListData;
+export default baTemplateData;
