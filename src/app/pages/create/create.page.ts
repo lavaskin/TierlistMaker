@@ -89,7 +89,7 @@ export class CreatePage {
 		this._storage.save(this.newTierlist!).subscribe({
 			next: (savedTierlist) => {
 				// nav over to the newly created tierlist
-				this._router.navigate(['/tierlist', savedTierlist.userId]);
+				this._router.navigate(['/tierlist', savedTierlist.tierlistId]);
 			},
 			error: (err) => {
 				this._toasts.add({ severity: 'error', summary: 'Error', detail: 'Failed to create tierlist.' });

@@ -65,10 +65,10 @@ export class TierlistPage {
 
 	ngOnInit() {
 		this._route.params.subscribe(params => {
-			const tierlistUserId = params['id'];
+			const tierlistId = params['id'];
 
 			this.isLoading = true;
-			this._storage.get(tierlistUserId).subscribe({
+			this._storage.get(tierlistId).subscribe({
 				next: (tierlist: TierlistModel) => {
 					this.tierlist = tierlist as TierlistModel;
 					this._checkCanReset();
@@ -100,7 +100,7 @@ export class TierlistPage {
 		if (!this.tierlist) return;
 
 		this.isLoadingDelete = true;
-		this._storage.delete(this.tierlist.userId!).subscribe({
+		this._storage.delete(this.tierlist.tierlistId!).subscribe({
 			next: () => {
 				this._alerts.showSuccess('Tierlist deleted successfully.', 'Deleted');
 				this._router.navigate(['/']);

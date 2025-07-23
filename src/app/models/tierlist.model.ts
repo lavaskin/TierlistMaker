@@ -12,7 +12,7 @@ export interface TierlistModel {
 	 * The auto-generated ID of the tierlist when a user creates it.
 	 * This is used to identify the tierlist in the database.
 	 */
-	userId?: number,
+	tierlistId?: number,
 	/**
 	 * The user modified tiers of the tierlist.
 	 * This is used to store the current state of the tierlist.

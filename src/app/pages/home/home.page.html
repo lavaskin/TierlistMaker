@@ -21,7 +21,7 @@
 		<div class="flex row gap-2">
 			@for (tierlist of userTierlists; track $index) {
 				<a pButton
-					routerLink="/tierlist/{{ tierlist.userId }}"
+					routerLink="/tierlist/{{ tierlist.tierlistId }}"
 					size="large"
 					severity="info">
 					<i class="pi pi-user" pButtonIcon></i>
