@@ -186,8 +186,8 @@ export class TierlistPage {
 			this.showEditItemDialog = true;
 		}
 		
-		// When not editing, show the variations dialog
-		else {
+		// When not editing, show the variations dialog (if the item even has variations)
+		else if (item.variations && item.variations.length > 0) {
 			this.selectedItemVariations = [];
 			this.showVariationsDialog = true;
 
