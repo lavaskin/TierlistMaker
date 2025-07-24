@@ -31,7 +31,6 @@ export class ViewerPage {
 			this._templates.get(tierlistId).subscribe({
 				next: (tierlist: TierlistModel) => {
 					this.tierlist = tierlist;
-					console.log('Loaded tierlist:', this.tierlist);
 				},
 				error: () => {
 					this._alerts.showError('Failed to load template.');

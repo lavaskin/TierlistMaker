@@ -1,5 +1,6 @@
 import { TemplateIdEnum } from "@app/models/enums/template-ids.enum";
 import { TierlistModel } from "@app/models/tierlist.model";
+import { preProcessTemplateData } from "@app/utils";
 
 // Info from: https://zenless-zone-zero.fandom.com/wiki/Agent#Playable_Agents
 
@@ -128,19 +129,13 @@ const zzzTemplateData: TierlistModel = {
 			name: '',
 			thumbnail: '',
 			variations: [
-				{ name: 'Default', image: '', },
+				// { name: 'Default', image: '', },
 			],
 		},
 		*/
 	],
 }
 
-// Add an id to all characters
-zzzTemplateData.items.forEach((item, index) => {
-	item.id = index + 1; // Assigning a unique id starting from 1
-});	
-
-// Sort the characters by name
-zzzTemplateData.items.sort((a, b) => a.name.localeCompare(b.name));
-
+// Pre-process the template data to add IDs and sort items and export them
+preProcessTemplateData(zzzTemplateData);
 export default zzzTemplateData;
