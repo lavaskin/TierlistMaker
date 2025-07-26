@@ -16,7 +16,7 @@
 	<div class="flex row gap-1">
 		<p-button
 			(click)="isEditing = !isEditing"
-			[pTooltip]="isEditing ? 'Save Tierlist' : 'Edit Tierlist'"
+			[pTooltip]="isEditing ? 'Finish Editing' : 'Edit Tierlist'"
 			tooltipPosition="left"
 			[icon]="isEditing ? 'pi pi-check' : 'pi pi-pencil'" />
 		<p-button
@@ -205,13 +205,21 @@
 				tooltipPosition="top"></p-button>
 		</div>
 
-		<p-button label="Create New Item"
-			*ngIf="isAddingNewItem"
-			icon="pi pi-plus"
-			class="ml-auto"
-			(click)="addNewItem()"
-			[disabled]="!selectedItem.name || !selectedItem.thumbnail"
-			severity="success" />
+		@if (isAddingNewItem) {
+			<p-button label="Create New Item"
+				icon="pi pi-plus"
+				class="ml-auto"
+				(click)="addNewItem()"
+				[disabled]="!selectedItem.name || !selectedItem.thumbnail"
+				severity="success" />
+		} @else {
+			<p-button label="Delete"
+				icon="pi pi-trash"
+				class="ml-auto"
+				(click)="deleteItem(selectedItem)"
+				[disabled]="!canDeleteItem(selectedItem.id)"
+				severity="danger" />
+		}
 	</div>
 </p-dialog>
 

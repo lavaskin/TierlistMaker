@@ -111,6 +111,9 @@ export class TierlistPage {
 		}).add(() => this.isLoadingDelete = false);
 	}
 
+	/**
+	 * Removes all the items from the tierlist tiers and moves them back to the main items array.
+	 */
 	public dropItems(): void {
 		if (!this.canDropItems) return;
 
@@ -125,6 +128,10 @@ export class TierlistPage {
 		this._checkCanDropItems();
 	}
 
+	/**
+	 * Handles the drop event for the drag-and-drop functionality.
+	 * @param event The DragDrop event
+	 */
 	public drop(event: CdkDragDrop<TierlistItemModel[]>): void {
 		// Moving an item around within the tier
 		if (event.previousContainer == event.container) {
@@ -171,6 +178,24 @@ export class TierlistPage {
 			name: '',
 			image: '',
 		};
+	}
+
+	public deleteItem(item: TierlistItemModel): void {
+		const index = this.tierlist?.items.indexOf(item);
+		if (index === undefined || index < 0) return;
+
+		this.tierlist!.items.splice(index, 1);
+		this.selectedItem = undefined;
+		this.isAddingNewItem = false;
+		this.showEditItemDialog = false;
+		this._alerts.showSuccess('Item deleted successfully.', 'Deleted');
+	}
+
+	public canDeleteItem(itemId?: number): boolean {
+		if (!this.tierlist || !itemId) return false;
+		
+		// An item can only be deleted if it is not in any tier
+		return !this.tierlist?.tiers?.some(tier => tier.items?.some(item => item.id === itemId));
 	}
 
 	public clickedTile(item: TierlistItemModel): void {
