@@ -1,13 +1,23 @@
 <nav class="flex row align-center w-100 px-4">
-	<ul class="flex row gap-3 align-center">
+	<ul class="flex row gap-3 align-center w-100">
 		<li>
-			<a class="font-xl" routerLink="/home">Tierlist Maker</a></li>
+			<a class="font-xl" routerLink="/home">Tierlist Maker</a>
+		</li>
 		<li>
 			<a pButton
 				routerLink="/create"
 				size=small>
 				<i class="pi pi-plus" pButtonIcon></i>
 				<span pButtonLabel>Create</span>
+			</a>
+		</li>
+		<li class="ml-auto">
+			<a pButton
+				routerLink="/login"
+				size=small
+				severity="info">
+				<i class="pi pi-user" pButtonIcon></i>
+				<span pButtonLabel>Login</span>
 			</a>
 		</li>
 	</ul>
