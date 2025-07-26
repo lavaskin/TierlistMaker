@@ -55,7 +55,7 @@ export class TierlistPage {
 	public showTierInfoDialog: boolean = false;
 	public selectedTier?: TierlistTier;
 
-	public canReset: boolean = false;
+	public canDropItems: boolean = false;
 
 	private _route = inject(ActivatedRoute);
 	private _router = inject(Router);
@@ -71,7 +71,7 @@ export class TierlistPage {
 			this._storage.get(tierlistId).subscribe({
 				next: (tierlist: TierlistModel) => {
 					this.tierlist = tierlist as TierlistModel;
-					this._checkCanReset();
+					this._checkCanDropItems();
 				},
 				error: () => {
 					this._alerts.showError('Tierlist not found.', 'Not Found');
@@ -111,21 +111,18 @@ export class TierlistPage {
 		}).add(() => this.isLoadingDelete = false);
 	}
 
-	public reset(): void {
-		// Fetch the template the tierlist is based on and set its tiers back to the default
-		this.isLoading = true;
-		this._templates.get(this.tierlist!.templateId).subscribe({
-			next: (template: TierlistModel) => {
-				this.tierlist!.tiers = template.tiers;
-				this.tierlist!.items = template.items;
-				
-				this.canReset = false;
-				this.isEditing = false;
-			},
-			error: () => {
-				this._alerts.showError('Failed to reset tierlist.');
-			}
-		}).add(() => this.isLoading = false);
+	public dropItems(): void {
+		if (!this.canDropItems) return;
+
+		// Move all the items from the tierlist tiers into the main items array
+		this.tierlist!.items.push(...this.tierlist!.tiers!.flatMap(tier => tier.items || []));
+
+		// Clear the tiers
+		this.tierlist!.tiers!.forEach(tier => {
+			tier.items = [];
+		});
+
+		this._checkCanDropItems();
 	}
 
 	public drop(event: CdkDragDrop<TierlistItemModel[]>): void {
@@ -144,7 +141,7 @@ export class TierlistPage {
 				event.currentIndex,
 			);
 
-			this._checkCanReset();
+			this._checkCanDropItems();
 		}
 	}
 
@@ -211,7 +208,7 @@ export class TierlistPage {
 
 		this.tierlist.tiers?.push(newTier);
 		this.clickedTier(newTier);
-		this._checkCanReset();
+		this._checkCanDropItems();
 	}
 
 	public clickedTier(tier: TierlistTier): void {
@@ -232,7 +229,7 @@ export class TierlistPage {
 		// Delete the tier
 		this.tierlist!.tiers!.splice(index, 1);
 		this.showTierInfoDialog = false;
-		this._checkCanReset();
+		this._checkCanDropItems();
 	}
 
 	public moveTierUp(index: number): void {
@@ -249,15 +246,9 @@ export class TierlistPage {
 		[tiers[index + 1], tiers[index]] = [tiers[index], tiers[index + 1]];
 	}
 
-	private _checkCanReset(): void {
+	private _checkCanDropItems(): void {
 		// Check if any of the tiers have items inside them
 		const tiersHaveItems = this.tierlist?.tiers?.some(tier => tier.items && tier.items.length > 0) || false;
-		const tiersDontMatchTemplate = this.tierlist?.tiers?.some((tier, index) => {
-			const templateTier = this.tierlist?.defaultTiers?.[index];
-			return !templateTier || tier.label !== templateTier.label || tier.color !== templateTier.color;
-		}) || false;
-		const defaultTiersMissing = this.tierlist?.defaultTiers?.length !== this.tierlist?.tiers?.length;
-
-		this.canReset = tiersHaveItems || tiersDontMatchTemplate || defaultTiersMissing;
+		this.canDropItems = tiersHaveItems;
 	}
 }

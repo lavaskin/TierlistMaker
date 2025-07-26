@@ -33,11 +33,11 @@
 			severity="danger"
 			icon="pi pi-trash" />
 		<p-button
-			icon="pi pi-undo"
-			(click)="reset()"
+			icon="pi pi-arrow-down"
+			(click)="dropItems()"
 			severity="warn"
-			pTooltip="Reset" tooltipPosition="right"
-			[disabled]="!canReset"></p-button>
+			pTooltip="Drop Items" tooltipPosition="right"
+			[disabled]="!canDropItems"></p-button>
 	</div>
 </div>
 
